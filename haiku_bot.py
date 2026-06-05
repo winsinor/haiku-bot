@@ -29,6 +29,13 @@ except ImportError:
 OLLAMA_BASE   = "http://localhost:11434"
 OLLAMA_URL    = f"{OLLAMA_BASE}/api/generate"
 DEFAULT_MODEL = "gemma2:2b"
+VERSION       = "1.0"
+
+VERBOSE = True  # set to False by --quiet flag
+
+def status(msg):
+    if VERBOSE:
+        print(f"  {msg}", flush=True)
 TARGET        = [5, 7, 5]
 CACHE_PATH    = os.path.expanduser("~/.haiku_wiki_cache.json")
 
@@ -412,26 +419,31 @@ def try_repair(model, lines, counts):
 def generate(model, event_text, summary):
     total_tokens = 0
 
-    # Pool pass
+    status("Generating haiku (pool strategy)...")
     assembled, tok = try_pool(model, event_text, summary)
     total_tokens += tok
     if assembled:
         ok, lines, counts = verify_haiku("\n".join(assembled))
         if ok:
+            status("Valid haiku assembled from pool.")
             return lines, counts, total_tokens, "pool"
 
-    # Salvage: whole-haiku gen + repair
+    status("Pool incomplete — trying direct generation...")
     raw, tok = call_ollama(model, gen_prompt(event_text, summary), temperature=0.7, num_predict=100)
     total_tokens += tok
     ok, lines, counts = verify_haiku(extract_haiku(raw))
     if ok:
+        status("Valid haiku generated directly.")
         return lines, counts, total_tokens, "direct"
     if len(lines) == 3:
+        status("Repairing syllable counts...")
         lines, counts, ok, tok = try_repair(model, lines, counts)
         total_tokens += tok
         if ok:
+            status("Haiku repaired successfully.")
             return lines, counts, total_tokens, "repair"
 
+    status("Could not produce a valid haiku.")
     return lines, counts, total_tokens, "failed"
 
 
@@ -494,11 +506,22 @@ def ensure_model(name):
 
 # ----------------------------- Main -----------------------------
 def main():
+    global VERBOSE
+
     p = argparse.ArgumentParser(description="Daily haiku bot")
     p.add_argument("--model", default=DEFAULT_MODEL, help=f"Ollama model (default: {DEFAULT_MODEL})")
     p.add_argument("--date", help="Date to draw events from (MM-DD), default: today")
     p.add_argument("--no-cache", action="store_true", help="Disable Wikipedia cache")
+    p.add_argument("--quiet", action="store_true", help="Skip status messages, output haiku only")
     args = p.parse_args()
+
+    VERBOSE = not args.quiet
+
+    if VERBOSE:
+        print(f"\n  {'=' * 30}")
+        print(f"  Haiku Bot v{VERSION}")
+        print(f"  {'=' * 30}\n")
+        print(f"  Model : {args.model}")
 
     ensure_model(args.model)
 
@@ -511,6 +534,7 @@ def main():
     else:
         today = datetime.date.today()
 
+    status(f"Fetching Wikipedia events for {today.strftime('%B %-d')}...")
     try:
         events = get_history_events(today, no_cache=args.no_cache)
     except Exception as e:
@@ -524,7 +548,15 @@ def main():
 
     event_text = event.get("text", "")
     year = event.get("year", "")
+    status(f"Event: {year} — {event_text}")
+
+    status("Fetching article summary...")
     summary = fetch_article_summary(event, no_cache=args.no_cache)
+    if summary:
+        status(f"Summary: {summary[:120]}{'...' if len(summary) > 120 else ''}")
+
+    if VERBOSE:
+        print()
 
     t0 = time.time()
     lines, counts, tokens, path = generate(args.model, event_text, summary)
