@@ -419,28 +419,23 @@ def try_repair(model, lines, counts):
 def generate(model, event_text, summary):
     total_tokens = 0
 
-    status("Generating haiku (pool strategy)...")
+    status("Generating haiku...")
     assembled, tok = try_pool(model, event_text, summary)
     total_tokens += tok
     if assembled:
         ok, lines, counts = verify_haiku("\n".join(assembled))
         if ok:
-            status("Valid haiku assembled from pool.")
             return lines, counts, total_tokens, "pool"
 
-    status("Pool incomplete — trying direct generation...")
     raw, tok = call_ollama(model, gen_prompt(event_text, summary), temperature=0.7, num_predict=100)
     total_tokens += tok
     ok, lines, counts = verify_haiku(extract_haiku(raw))
     if ok:
-        status("Valid haiku generated directly.")
         return lines, counts, total_tokens, "direct"
     if len(lines) == 3:
-        status("Repairing syllable counts...")
         lines, counts, ok, tok = try_repair(model, lines, counts)
         total_tokens += tok
         if ok:
-            status("Haiku repaired successfully.")
             return lines, counts, total_tokens, "repair"
 
     status("Could not produce a valid haiku.")
@@ -550,10 +545,7 @@ def main():
     year = event.get("year", "")
     status(f"Event: {year} — {event_text}")
 
-    status("Fetching article summary...")
     summary = fetch_article_summary(event, no_cache=args.no_cache)
-    if summary:
-        status(f"Summary: {summary[:120]}{'...' if len(summary) > 120 else ''}")
 
     if VERBOSE:
         print()
