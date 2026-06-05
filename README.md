@@ -1,24 +1,50 @@
 # haiku-bot
 
-Benchmark for local LLMs: pull a random "on this day in history" event from Wikipedia, generate a valid 5/7/5 haiku about it, and report success rate + token cost. Runs against any model served by [Ollama](https://ollama.com).
+Fetches an "on this day in history" event from Wikipedia and generates a valid 5/7/5 haiku using a local LLM via [Ollama](https://ollama.com).
 
-## Requirements
+## Install
 
-```
-pip install requests syllables pronouncing
-```
-
-Ollama must be running locally on port 11434.
-
-## Usage
+Requires Ollama. If it's not installed:
 
 ```bash
-python3 haiku_benchmark_v2.py
+curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Without flags the script prompts you to pick a model and number of cycles interactively.
+Then clone and set up:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/winsinor/haiku-bot/main/setup.sh | bash
+```
+
+## Run
+
+```bash
+python3 haiku_bot.py
+```
+
+Example output:
+
+```
+  June 5, 1783 — The Montgolfier brothers made their first public balloon flight
+
+    Silk bag catches wind
+    Two brothers reach for the clouds
+    Earth falls far below
+
+  5 / 7 / 5  ·  287 tokens  ·  3.8s  ·  via pool
+```
 
 ## Flags
+
+| Flag | Description |
+|---|---|
+| `--model NAME` | Ollama model to use (default: `gemma2:2b`) |
+| `--date MM-DD` | Draw events from a specific date (default: today) |
+| `--no-cache` | Disable the Wikipedia response cache |
+
+## Benchmark
+
+`tests/haiku_benchmark_v2.py` runs multi-cycle benchmarks across models and generation strategies.
 
 | Flag | Description |
 |---|---|
@@ -36,22 +62,22 @@ Without flags the script prompts you to pick a model and number of cycles intera
 | `--record` | Save all raw model responses to `~/.haiku_record.jsonl` |
 | `--replay` | Replay from `~/.haiku_record.jsonl` instead of calling Ollama |
 
-## Strategies
+### Strategies
 
 - **repair** — generate a whole haiku, then fix individual lines that miss the syllable target
 - **pool** — generate candidate lines per position, filter to valid ones, assemble a non-repeating combo
 - **hybrid** — try pool first, fall back to repair if assembly fails
 
-## Record / Replay
+### Record / Replay
 
-Record a run once, then iterate on the verifier or assembler logic at zero model cost:
+Record a run once, then iterate on verifier or assembler logic at zero model cost:
 
 ```bash
-python3 haiku_benchmark_v2.py --model qwen2.5:1.5b --cycles 50 --seed 1 --record --once
-python3 haiku_benchmark_v2.py --model qwen2.5:1.5b --cycles 50 --seed 1 --replay --json results/after.json --once
+python3 tests/haiku_benchmark_v2.py --model qwen2.5:1.5b --cycles 50 --seed 1 --record --once
+python3 tests/haiku_benchmark_v2.py --model qwen2.5:1.5b --cycles 50 --seed 1 --replay --json results/after.json --once
 ```
 
-## Comparing runs
+### Comparing runs
 
 ```bash
 python3 tests/compare_runs.py results/run_a.json results/run_b.json
