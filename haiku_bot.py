@@ -378,9 +378,12 @@ def assemble(pools):
     return None
 
 
+POSITION_LABEL = ["line 1 (5)", "line 2 (7)", "line 3 (5)"]
+
 def try_pool(model, event_text, summary):
     pools, used, tokens = [], set(), 0
     for pos in range(3):
+        status(f"  Generating candidates for {POSITION_LABEL[pos]}...")
         raw, tok = call_ollama(model, pool_prompt(pos, event_text, summary, used), temperature=0.7, num_predict=120)
         tokens += tok
         cands = [c for c in parse_pool(raw) if line_hits(c, TARGET[pos])]
@@ -433,6 +436,7 @@ def generate(model, event_text, summary):
     if ok:
         return lines, counts, total_tokens, "direct"
     if len(lines) == 3:
+        status("  Repairing syllable counts...")
         lines, counts, ok, tok = try_repair(model, lines, counts)
         total_tokens += tok
         if ok:
