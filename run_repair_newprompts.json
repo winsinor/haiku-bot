@@ -1,0 +1,1790 @@
+{
+  "meta": {
+    "model": "qwen2.5:1.5b",
+    "strategy": "repair",
+    "cycles": 30,
+    "seed": 2,
+    "timestamp": "2026-06-04T01:26:39",
+    "config": {
+      "POOL_SIZE": 6,
+      "MAX_LINE_FAILURES": [
+        3,
+        5,
+        3
+      ],
+      "MAX_REPAIR_DISTANCE": 3,
+      "REPAIR_TEMPS": [
+        0.3,
+        0.15,
+        0.5,
+        0.2,
+        0.6,
+        0.35,
+        0.55
+      ]
+    },
+    "total_time_s": 1421.2
+  },
+  "aggregate": {
+    "success": 20,
+    "success_rate": 0.6667,
+    "avg_tokens": 980.1,
+    "tokens_per_success": 806.5,
+    "tolerance_saves": 8,
+    "bailouts": 72,
+    "line_failures": [
+      128,
+      72,
+      27
+    ],
+    "tokens_by_phase": {
+      "pool": 0,
+      "repair": 19164,
+      "salvage": 0,
+      "gen": 10240,
+      "rerank": 0
+    }
+  },
+  "cycles": [
+    {
+      "date": "January 03",
+      "inspiration": "A magnitude 7.7 earthquake destroys the city of Almaty in Russian Turkestan.",
+      "lines": [
+        "Magnitude 7.7 tremor shook",
+        "Almaty's heart forever",
+        "Silence marks its scars"
+      ],
+      "counts": [
+        6,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1203,
+      "tok": {
+        "pool": 0,
+        "repair": 639,
+        "salvage": 0,
+        "gen": 564,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 31.025503635406494,
+        "salvage": 0.0,
+        "gen": 33.15390419960022,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 12",
+      "inspiration": "NEAR Shoemaker spacecraft touches down in the \"saddle\" region of 433 Eros, becoming the first spacecraft to land on an asteroid.",
+      "lines": [
+        "Spell out any numbers as words. Do not repeat a word across lines.",
+        "Use simple common words; avoid long proper nouns.",
+        "Syllable counts for key words: NEAR=1, Shoemaker=3, spacecraft=2-3, touches=2, down=1, saddle=2, region"
+      ],
+      "counts": [
+        17,
+        12,
+        20
+      ],
+      "ranges": [
+        [
+          17,
+          18
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          20,
+          21
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1263,
+      "tok": {
+        "pool": 0,
+        "repair": 780,
+        "salvage": 0,
+        "gen": 483,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 33.9569833278656,
+        "salvage": 0.0,
+        "gen": 30.680264472961426,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 24",
+      "inspiration": "Johann Sebastian Bach dedicates six concertos to Margrave Christian Ludwig of Brandenburg-Schwedt, now commonly called the Brandenburg Concertos, BWV 1046\u20131051.",
+      "lines": [
+        "Johann dedicates",
+        "To Margrave Christian Ludwig",
+        "Bach\u2019s music lives."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1205,
+      "tok": {
+        "pool": 0,
+        "repair": 748,
+        "salvage": 0,
+        "gen": 457,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 31.119284629821777,
+        "salvage": 0.0,
+        "gen": 26.19253158569336,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        3
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 28",
+      "inspiration": "Space Shuttle Columbia is launched on STS-9, the first mission to carry the European Space Agency's Spacelab module.",
+      "lines": [
+        "Shuttle Columbia,",
+        "launches into skies anew,",
+        "first mission's triumph."
+      ],
+      "counts": [
+        6,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 740,
+      "tok": {
+        "pool": 0,
+        "repair": 364,
+        "salvage": 0,
+        "gen": 376,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 16.663374423980713,
+        "salvage": 0.0,
+        "gen": 15.823492765426636,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        4,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 09",
+      "inspiration": "The Food and Drug Administration announces it will approve birth control as an additional indication for Searle's Enovid, making Enovid the world's first approved oral contraceptive pill.",
+      "lines": [
+        "A drug for the day",
+        "Enovid, bold on tongues",
+        "Silent birth's command"
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 559,
+      "tok": {
+        "pool": 0,
+        "repair": 209,
+        "salvage": 0,
+        "gen": 350,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 9.752578258514404,
+        "salvage": 0.0,
+        "gen": 17.089624881744385,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 07",
+      "inspiration": "Asteroid 2008 TC3 impacts the Earth over Sudan, the first time an asteroid impact is detected prior to its entry into Earth's atmosphere.",
+      "lines": [
+        "Asteroid's fiery fall",
+        "Earth trembles at its sight",
+        "Silent emptiness reigns"
+      ],
+      "counts": [
+        7,
+        6,
+        6
+      ],
+      "ranges": [
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1445,
+      "tok": {
+        "pool": 0,
+        "repair": 1029,
+        "salvage": 0,
+        "gen": 416,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 48.31910967826843,
+        "salvage": 0.0,
+        "gen": 22.574875116348267,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        9,
+        1,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 02",
+      "inspiration": "Mexican President Gustavo D\u00edaz Ordaz orders soldiers to suppress a demonstration of unarmed students, ten days before the start of the 1968 Summer Olympics.",
+      "lines": [
+        "[five syllables]",
+        "[five syllables]",
+        "[five syllables]"
+      ],
+      "counts": [
+        4,
+        4,
+        4
+      ],
+      "ranges": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1912,
+      "tok": {
+        "pool": 0,
+        "repair": 1520,
+        "salvage": 0,
+        "gen": 392,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 65.90221738815308,
+        "salvage": 0.0,
+        "gen": 23.19580578804016,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        10,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 22",
+      "inspiration": "Andr\u00e9-Jacques Garnerin makes the first recorded parachute jump, from 1,000 metres (3,300\u00a0ft) above Paris.",
+      "lines": [
+        "And Jacques climbs high",
+        "His creation, new and bold",
+        "The first man-made leap."
+      ],
+      "counts": [
+        4,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 4,
+      "tokens": 1493,
+      "tok": {
+        "pool": 0,
+        "repair": 1162,
+        "salvage": 0,
+        "gen": 331,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 50.55006217956543,
+        "salvage": 0.0,
+        "gen": 20.165011405944824,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        0,
+        3
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 14",
+      "inspiration": "Norman Thagard becomes the first American astronaut to ride to space on board a Russian launch vehicle.",
+      "lines": [
+        "Norman steps aboard",
+        "First American in flight",
+        "Silent rocket lifts"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 3,
+      "tokens": 885,
+      "tok": {
+        "pool": 0,
+        "repair": 587,
+        "salvage": 0,
+        "gen": 298,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 26.93257427215576,
+        "salvage": 0.0,
+        "gen": 14.758381128311157,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        5,
+        1
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 13",
+      "inspiration": "James Braid first sees a demonstration of animal magnetism by Charles Lafontaine, which leads to his study of the subject he eventually calls hypnotism.",
+      "lines": [
+        "James Braid first sees",
+        "Charles Lafontaine's demonstration",
+        "Animal magnetism holds his world"
+      ],
+      "counts": [
+        4,
+        9,
+        10
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 732,
+      "tok": {
+        "pool": 0,
+        "repair": 387,
+        "salvage": 0,
+        "gen": 345,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 17.4091854095459,
+        "salvage": 0.0,
+        "gen": 19.031112670898438,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        1,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 28",
+      "inspiration": "Maurice Richard becomes the first player to score eight points in one game of NHL ice hockey.",
+      "lines": [
+        "Maurice Richard scores,",
+        "First player to rack up eight,",
+        "New era begins."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 267,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 267,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 10.576122283935547,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 12",
+      "inspiration": "NASA confirms that its Voyager 1 probe has become the first manmade object to enter interstellar space.",
+      "lines": [
+        "[NASA confirms]",
+        "[Voyager probe becomes]",
+        "[first object]"
+      ],
+      "counts": [
+        4,
+        6,
+        3
+      ],
+      "ranges": [
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1105,
+      "tok": {
+        "pool": 0,
+        "repair": 779,
+        "salvage": 0,
+        "gen": 326,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 33.62091040611267,
+        "salvage": 0.0,
+        "gen": 18.9194757938385,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        9,
+        0,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 15",
+      "inspiration": "The Soviet Zond 5 spaceship is launched, becoming the first spacecraft to fly around the Moon and re-enter the Earth's atmosphere.",
+      "lines": [
+        "Soviet skies spin",
+        "Spaceship soars beyond Earth's call",
+        "New dawn in space"
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 3,
+      "tokens": 756,
+      "tok": {
+        "pool": 0,
+        "repair": 401,
+        "salvage": 0,
+        "gen": 355,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 18.35238289833069,
+        "salvage": 0.0,
+        "gen": 18.709168195724487,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        0,
+        0
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 09",
+      "inspiration": "Thomas Cavendish in his ship Desire enters Plymouth and completes the first deliberately planned voyage of circumnavigation.",
+      "lines": [
+        "[ship Desire sails]",
+        "Cavendish enters Plymouth",
+        "Victory's first dawn"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1019,
+      "tok": {
+        "pool": 0,
+        "repair": 596,
+        "salvage": 0,
+        "gen": 423,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 25.652647733688354,
+        "salvage": 0.0,
+        "gen": 22.831938982009888,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        0,
+        0
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 28",
+      "inspiration": "Jane Austen's Pride and Prejudice is first published in the United Kingdom.",
+      "lines": [
+        "Jenny's pen writes pride",
+        "Jane Austen publishes wit",
+        "World smiles for love"
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 409,
+      "tok": {
+        "pool": 0,
+        "repair": 183,
+        "salvage": 0,
+        "gen": 226,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 6.885229587554932,
+        "salvage": 0.0,
+        "gen": 9.206345796585083,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 12",
+      "inspiration": "Comet C/2006 P1 (McNaught), one of the brightest comets ever observed is at its zenith visible during the day.",
+      "lines": [
+        "Comet glows in sky",
+        "Brightest streaks across the dawn",
+        "Endless journey's end."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 535,
+      "tok": {
+        "pool": 0,
+        "repair": 204,
+        "salvage": 0,
+        "gen": 331,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 9.299441814422607,
+        "salvage": 0.0,
+        "gen": 15.050890445709229,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 11",
+      "inspiration": "The first civilian prisoners arrive at the Federal prison on Alcatraz Island.",
+      "lines": [
+        "three walls stretch,",
+        "silence falls on the island,",
+        "prisoners step ashore."
+      ],
+      "counts": [
+        3,
+        7,
+        6
+      ],
+      "ranges": [
+        [
+          3,
+          3
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1391,
+      "tok": {
+        "pool": 0,
+        "repair": 973,
+        "salvage": 0,
+        "gen": 418,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 43.504823207855225,
+        "salvage": 0.0,
+        "gen": 25.879218101501465,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        8,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 14",
+      "inspiration": "Mariner 4 flyby of Mars takes the first close-up photos of another planet. The photographs take approximately six hours to be transmitted back to Earth.",
+      "lines": [
+        "Mariner flies by",
+        "Mars' secrets revealed in light",
+        "First photos, brief truth"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 891,
+      "tok": {
+        "pool": 0,
+        "repair": 593,
+        "salvage": 0,
+        "gen": 298,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 26.854304552078247,
+        "salvage": 0.0,
+        "gen": 13.44737696647644,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        2
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 06",
+      "inspiration": "The first Minotaur V rocket is launched from the Mid-Atlantic Regional Spaceport on Wallops Island, carrying NASA's LADEE spacecraft.",
+      "lines": [
+        "two minutes later",
+        "the clock ticks on the launchpad",
+        "launched to space"
+      ],
+      "counts": [
+        5,
+        7,
+        3
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 4,
+      "tokens": 1010,
+      "tok": {
+        "pool": 0,
+        "repair": 629,
+        "salvage": 0,
+        "gen": 381,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 30.007929801940918,
+        "salvage": 0.0,
+        "gen": 20.96672487258911,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        5,
+        0
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 06",
+      "inspiration": "The first Minotaur V rocket is launched from the Mid-Atlantic Regional Spaceport on Wallops Island, carrying NASA's LADEE spacecraft.",
+      "lines": [
+        "Minotaur V climbs",
+        "Into space, past mountains vast",
+        "Launch of dreams begins"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 3,
+      "tokens": 497,
+      "tok": {
+        "pool": 0,
+        "repair": 356,
+        "salvage": 0,
+        "gen": 141,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 14.880349159240723,
+        "salvage": 0.0,
+        "gen": 15.145066976547241,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 08",
+      "inspiration": "Solar eclipse: A total solar eclipse takes place at the Moon's ascending node, visible across North America.",
+      "lines": [
+        "Solar's darkened dome",
+        "Moon veils the Sun in glory",
+        "Silent Sun's light dimmed"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 3,
+      "tokens": 1052,
+      "tok": {
+        "pool": 0,
+        "repair": 666,
+        "salvage": 0,
+        "gen": 386,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 31.650992393493652,
+        "salvage": 0.0,
+        "gen": 21.261432886123657,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        5,
+        0
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 06",
+      "inspiration": "Justin Trudeau announces his resignation as leader of the Liberal Party of Canada and Prime Minister of Canada after nine years in office.",
+      "lines": [
+        "Justin stands in quiet.",
+        "Trudeau's words echo through the halls",
+        "Canada waits for change"
+      ],
+      "counts": [
+        6,
+        8,
+        6
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1725,
+      "tok": {
+        "pool": 0,
+        "repair": 1398,
+        "salvage": 0,
+        "gen": 327,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 64.90076494216919,
+        "salvage": 0.0,
+        "gen": 17.869801998138428,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        13,
+        6
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "June 06",
+      "inspiration": "The first drive-in theater opens in Camden, New Jersey.",
+      "lines": [
+        "First drive-in stands tall",
+        "Camden welcomes films in sheds",
+        "Sun sets on new dawn"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 899,
+      "tok": {
+        "pool": 0,
+        "repair": 581,
+        "salvage": 0,
+        "gen": 318,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 25.865675687789917,
+        "salvage": 0.0,
+        "gen": 17.470167875289917,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        3,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 17",
+      "inspiration": "The United States launches the first solar-powered satellite, which is also the first satellite to achieve a long-term orbit.",
+      "lines": [
+        "United States flies",
+        "Vanguard 1 soars into space,",
+        "First solar-powered satellite."
+      ],
+      "counts": [
+        5,
+        6,
+        8
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1038,
+      "tok": {
+        "pool": 0,
+        "repair": 725,
+        "salvage": 0,
+        "gen": 313,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 33.648029088974,
+        "salvage": 0.0,
+        "gen": 17.36873149871826,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        7,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 12",
+      "inspiration": "NASA confirms that its Voyager 1 probe has become the first manmade object to enter interstellar space.",
+      "lines": [
+        "The US engines run",
+        "confirm Voyager's voyage",
+        "spaceship crosses stars"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 673,
+      "tok": {
+        "pool": 0,
+        "repair": 408,
+        "salvage": 0,
+        "gen": 265,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 18.094184398651123,
+        "salvage": 0.0,
+        "gen": 12.106292486190796,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        4,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 22",
+      "inspiration": "Red Dye No. 4 is banned by the US Food and Drug Administration after it is discovered that it causes tumors in the bladders of dogs.",
+      "lines": [
+        "Danger lurks in dye",
+        "FDA bans carcinogens",
+        "Safety comes first"
+      ],
+      "counts": [
+        5,
+        8,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 469,
+      "tok": {
+        "pool": 0,
+        "repair": 226,
+        "salvage": 0,
+        "gen": 243,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 10.921265125274658,
+        "salvage": 0.0,
+        "gen": 11.84567904472351,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 06",
+      "inspiration": "The first Minotaur V rocket is launched from the Mid-Atlantic Regional Spaceport on Wallops Island, carrying NASA's LADEE spacecraft.",
+      "lines": [
+        "three legs stand on sand",
+        "Minotaur V rises bright",
+        "Launched, silence fills air"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 3,
+      "tokens": 969,
+      "tok": {
+        "pool": 0,
+        "repair": 617,
+        "salvage": 0,
+        "gen": 352,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 29.99938464164734,
+        "salvage": 0.0,
+        "gen": 17.723268032073975,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        4,
+        0
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 26",
+      "inspiration": "The first flight of the Boeing Delta III ends in disaster 75 seconds after liftoff, resulting in the loss of the Galaxy X  communications satellite.",
+      "lines": [
+        "boeing delta three",
+        "engine ends in bright dawn",
+        "disaster on time"
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 439,
+      "tok": {
+        "pool": 0,
+        "repair": 197,
+        "salvage": 0,
+        "gen": 242,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 8.485100507736206,
+        "salvage": 0.0,
+        "gen": 9.498509883880615,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        1,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 24",
+      "inspiration": "Mary, Queen of Scots, is forced to abdicate and be replaced by her one-year-old son James VI.",
+      "lines": [
+        "Mary's crown falls bright",
+        "Queen abdicates to a child",
+        "Scots' fate redefined"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1363,
+      "tok": {
+        "pool": 0,
+        "repair": 1046,
+        "salvage": 0,
+        "gen": 317,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 49.55162501335144,
+        "salvage": 0.0,
+        "gen": 18.098795652389526,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        7,
+        5,
+        0
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 25",
+      "inspiration": "Dr. Frank Jobe performs first ulnar collateral ligament replacement surgery (better known as Tommy John surgery) on baseball player Tommy John.",
+      "lines": [
+        "Three surgeons' hands",
+        "Fingers gently glide over bones",
+        "Tommy John's pain fades"
+      ],
+      "counts": [
+        4,
+        8,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1460,
+      "tok": {
+        "pool": 0,
+        "repair": 1161,
+        "salvage": 0,
+        "gen": 299,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 52.44145965576172,
+        "salvage": 0.0,
+        "gen": 17.222581386566162,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        10,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

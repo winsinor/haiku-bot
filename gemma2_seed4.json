@@ -1,0 +1,1816 @@
+{
+  "meta": {
+    "model": "gemma2:2b",
+    "strategy": "repair",
+    "cycles": 30,
+    "seed": 4,
+    "timestamp": "2026-06-04T11:55:13",
+    "config": {
+      "POOL_SIZE": 6,
+      "MAX_LINE_FAILURES": [
+        3,
+        5,
+        3
+      ],
+      "MAX_REPAIR_DISTANCE": 3,
+      "REPAIR_TEMPS": [
+        0.3,
+        0.15,
+        0.5,
+        0.2,
+        0.6,
+        0.35,
+        0.55
+      ]
+    },
+    "total_time_s": 3451.34
+  },
+  "aggregate": {
+    "success": 28,
+    "success_rate": 0.9333,
+    "avg_tokens": 931.9,
+    "tokens_per_success": 829.2,
+    "tolerance_saves": 12,
+    "bailouts": 15,
+    "line_failures": [
+      13,
+      48,
+      8
+    ],
+    "tokens_by_phase": {
+      "pool": 0,
+      "repair": 15111,
+      "salvage": 0,
+      "gen": 12846,
+      "rerank": 0
+    }
+  },
+  "cycles": [
+    {
+      "date": "April 10",
+      "inspiration": "Halley's Comet makes its closest approach to Earth at a distance equal to 0.0342 AU (5.1\u00a0million kilometres/3.2\u00a0million miles).",
+      "lines": [
+        "Comet's engine roars",
+        "Makes its closest approach,",
+        "Near Earth in space."
+      ],
+      "counts": [
+        5,
+        6,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 518,
+      "tok": {
+        "pool": 0,
+        "repair": 192,
+        "salvage": 0,
+        "gen": 326,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 32.66624593734741,
+        "salvage": 0.0,
+        "gen": 33.93064999580383,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 24",
+      "inspiration": "Rinaldo by George Frideric Handel, the first Italian opera written for the London stage, is premi\u00e8red.",
+      "lines": [
+        "Sound of music plays",
+        "On stage in London's bright light",
+        "First opera sings"
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 415,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 415,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 74.14301133155823,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 16",
+      "inspiration": "The storming of the cockpit of the Miss Macao passenger seaplane, operated by a subsidiary of the Cathay Pacific Airways, marks the first aircraft hijacking of a commercial plane.",
+      "lines": [
+        "Storming, dark and loud,",
+        "Engine bright morning launch",
+        "Plane takes flight"
+      ],
+      "counts": [
+        5,
+        6,
+        3
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 680,
+      "tok": {
+        "pool": 0,
+        "repair": 383,
+        "salvage": 0,
+        "gen": 297,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 45.677509784698486,
+        "salvage": 0.0,
+        "gen": 45.62844371795654,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 03",
+      "inspiration": "A freight train carrying stowaway passengers stalls in a tunnel shortly after departing from Balvano, Basilicata, Italy just after midnight, with 517 dying from carbon monoxide poisoning.",
+      "lines": [
+        "Engine's roar fills night",
+        "Stowaway\u2019s risky flight,",
+        "Stuck in the dark hole."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 1708,
+      "tok": {
+        "pool": 0,
+        "repair": 1149,
+        "salvage": 0,
+        "gen": 559,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 145.65689611434937,
+        "salvage": 0.0,
+        "gen": 58.06240630149841,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 01",
+      "inspiration": "Mao Zedong makes a speech on \"Reform in Learning, the Party and Literature\", which puts into motion the Yan'an Rectification Movement.",
+      "lines": [
+        "Mao Zedong makes speech,",
+        "Reform in Learning sought out,",
+        "Party and Lit. which"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 364,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 364,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 39.73655581474304,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 18",
+      "inspiration": "Nadia Com\u0103neci becomes the first person in Olympic Games history to score a perfect 10 in gymnastics at the 1976 Summer Olympics.",
+      "lines": [
+        "Young gymnast so strong,",
+        "First to score perfect ten,",
+        "History made now."
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 302,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 302,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 40.89666390419006,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 26",
+      "inspiration": "Apollo program: Apollo 10 returns to Earth after a successful eight-day test of all the components needed for the forthcoming first crewed Moon landing.",
+      "lines": [
+        "Moon mission's high aim,",
+        "Eagle's flight returns to Earth,",
+        "Spacecraft takes new course"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 592,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 592,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 63.42088437080383,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 08",
+      "inspiration": "The first Lithuanian-language book, the Catechism of Martynas Ma\u017evydas, is published in K\u00f6nigsberg.",
+      "lines": [
+        "First book of words new,",
+        "Lithuanian language bold",
+        "From Martynas' hand."
+      ],
+      "counts": [
+        5,
+        8,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 1257,
+      "tok": {
+        "pool": 0,
+        "repair": 595,
+        "salvage": 0,
+        "gen": 662,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 96.60043239593506,
+        "salvage": 0.0,
+        "gen": 72.55075478553772,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        3
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 18",
+      "inspiration": "Voyager I takes the first distant photograph of the Earth and the Moon together.",
+      "lines": [
+        "Voyager takes first,",
+        "Distance shot of Earth and Moon,",
+        "Close to space's dark."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 326,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 326,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 31.769134998321533,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "June 09",
+      "inspiration": "The USS\u00a0George Washington is launched. It is the first nuclear-powered ballistic missile submarine.",
+      "lines": [
+        "Giant ship set sail,",
+        "First with might and force so strong,",
+        "Power now takes hold."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 362,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 362,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 44.60899090766907,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 27",
+      "inspiration": "The Food and Drug Administration approves Viagra for use as a treatment for erectile dysfunction, the first pill to be approved for this condition in the United States.",
+      "lines": [
+        "Food is put in pills",
+        "Drug's power helps people heal",
+        "Medicine for men"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 3,
+      "tokens": 1693,
+      "tok": {
+        "pool": 0,
+        "repair": 1301,
+        "salvage": 0,
+        "gen": 392,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 189.42206597328186,
+        "salvage": 0.0,
+        "gen": 63.334497690200806,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        0,
+        0
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 09",
+      "inspiration": "The Beatles make their first appearance on The Ed Sullivan Show, performing before a record-setting audience of 73 million viewers across the United States.",
+      "lines": [
+        "Beatles bold appear,",
+        "Their first show shines on the screen,",
+        "Sullivan's stage bright."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 285,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 285,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 31.381316661834717,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 01",
+      "inspiration": "The Artemis II lunar flyby mission launches, marking the first crewed flight above low Earth orbit since Apollo 17 in 1972.",
+      "lines": [
+        "Artemis goes high,",
+        "Lunar mission takes to flight,",
+        "First crewed flyby."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 298,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 298,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 43.24962091445923,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 26",
+      "inspiration": "The Mars Science Laboratory launches to Mars with the Curiosity Rover.",
+      "lines": [
+        "Red planet calls out,",
+        "Science lab sends rover bold,",
+        "Curiosity."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 1315,
+      "tok": {
+        "pool": 0,
+        "repair": 954,
+        "salvage": 0,
+        "gen": 361,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 159.34222412109375,
+        "salvage": 0.0,
+        "gen": 53.07664632797241,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 26",
+      "inspiration": "Apollo program: Apollo 10 returns to Earth after a successful eight-day test of all the components needed for the forthcoming first crewed Moon landing.",
+      "lines": [
+        "Astronauts' bold flight,",
+        "A rocket's fiery ascent,",
+        "Earth draws near again."
+      ],
+      "counts": [
+        5,
+        8,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 1508,
+      "tok": {
+        "pool": 0,
+        "repair": 950,
+        "salvage": 0,
+        "gen": 558,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 129.7793734073639,
+        "salvage": 0.0,
+        "gen": 74.28429365158081,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 07",
+      "inspiration": "Space Shuttle program: The Space Shuttle Endeavour is launched on its first mission, STS-49.",
+      "lines": [
+        "Bright orange flame shoots,",
+        "Giant ship takes flight in sky,",
+        "Journey's just begun."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 293,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 293,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 31.96233892440796,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 10",
+      "inspiration": "Bam Adebayo of the Miami Heat recorded the second-highest scoring game in NBA history with 83 Points.",
+      "lines": [
+        "Adebayo's name,",
+        "Miami Heat's high score soared,",
+        "Record set tonight.",
+        "Light shines on the court,",
+        "Crowd roars with each point made,",
+        "Second highest score.",
+        "Nighttime sky glows,",
+        "With basketball's magic touch,",
+        "Bam's epic game."
+      ],
+      "counts": [],
+      "ranges": [
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1180,
+      "tok": {
+        "pool": 0,
+        "repair": 607,
+        "salvage": 0,
+        "gen": 573,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 94.88990879058838,
+        "salvage": 0.0,
+        "gen": 153.55935764312744,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 21",
+      "inspiration": "Bad weather forces Amelia Earhart to land in a pasture in Derry, Northern Ireland, and she thereby becomes the first woman to fly solo across the Atlantic Ocean.",
+      "lines": [
+        "Storm clouds gather dark,",
+        "Forces Amelia's flight down,",
+        "Pastures hold her now."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 242,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 242,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 33.78176712989807,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 28",
+      "inspiration": "Maurice Richard becomes the first player to score eight points in one game of NHL ice hockey.",
+      "lines": [
+        "Ice sharp blades fly fast,",
+        "Scoring eight points in a game,",
+        "Richard's mark made clear"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 510,
+      "tok": {
+        "pool": 0,
+        "repair": 204,
+        "salvage": 0,
+        "gen": 306,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 36.421995878219604,
+        "salvage": 0.0,
+        "gen": 42.6142520904541,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "June 03",
+      "inspiration": "Samuel de Champlain lands at Tadoussac, Quebec, in the course of his third voyage to New France, and begins erecting fortifications.",
+      "lines": [
+        "Champlain's ships reach shore,",
+        "Landing on Tadoussac's sand,",
+        "History takes hold."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 297,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 297,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 39.916112661361694,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 11",
+      "inspiration": "CBS's field-sequential color system for television is the first to be licensed for broadcast by the U.S. Federal Communications Commission.",
+      "lines": [
+        "Fields of bright light show,",
+        "Sequence colors in turn shine,",
+        "First system's new test."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 3,
+      "tokens": 986,
+      "tok": {
+        "pool": 0,
+        "repair": 560,
+        "salvage": 0,
+        "gen": 426,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 121.6305890083313,
+        "salvage": 0.0,
+        "gen": 105.52703261375427,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        3
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 13",
+      "inspiration": "James Braid first sees a demonstration of animal magnetism by Charles Lafontaine, which leads to his study of the subject he eventually calls hypnotism.",
+      "lines": [
+        "Surgeon's keen eyes see",
+        "First glimpse of a strange force,",
+        "Power takes the stage."
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 293,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 293,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 31.516576528549194,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 08",
+      "inspiration": "In Huntsville, Alabama, US President Dwight D. Eisenhower formally dedicates the Marshall Space Flight Center (NASA had already activated the facility on July 1).",
+      "lines": [
+        "Huntsville town stands",
+        "Alabama's heart beats strong",
+        "President's decree"
+      ],
+      "counts": [
+        4,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 1046,
+      "tok": {
+        "pool": 0,
+        "repair": 973,
+        "salvage": 0,
+        "gen": 73,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 140.24806666374207,
+        "salvage": 0.0,
+        "gen": 35.46683716773987,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 08",
+      "inspiration": "Space Shuttle Discovery launches on STS-102, carrying the Expedition 2 crew to the International Space Station.",
+      "lines": [
+        "Shuttle's flight begins,",
+        "Engine's bright morn-ing launch",
+        "Crew on board to fly."
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 2302,
+      "tok": {
+        "pool": 0,
+        "repair": 1708,
+        "salvage": 0,
+        "gen": 594,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 196.44944286346436,
+        "salvage": 0.0,
+        "gen": 55.10865569114685,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        8,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 09",
+      "inspiration": "Shannon Eastin becomes the first woman to officiate an NFL game.",
+      "lines": [
+        "Eastin takes the field,",
+        "First woman to officiate,",
+        "Game begins anew."
+      ],
+      "counts": [
+        5,
+        8,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 3559,
+      "tok": {
+        "pool": 0,
+        "repair": 2428,
+        "salvage": 0,
+        "gen": 1131,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 158.16427183151245,
+        "salvage": 0.0,
+        "gen": 94.58653283119202,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        10,
+        0
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 27",
+      "inspiration": "Pakistan Air Force JF-17 Thunder downs Indian pilot Abhinandan Varthaman's Mig-21 in an aerial dogfight and captures him after conducting airstrikes in Jammu and Kashmir.",
+      "lines": [
+        "Pakistan's might flies,",
+        "Thunder strikes down pilot bold,",
+        "Engine roars loud"
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 739,
+      "tok": {
+        "pool": 0,
+        "repair": 389,
+        "salvage": 0,
+        "gen": 350,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 26.26736831665039,
+        "salvage": 0.0,
+        "gen": 30.444316148757935,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        1
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 27",
+      "inspiration": "Over two million people participated in worldwide strikes to protest climate change across 2,400 locations worldwide.",
+      "lines": [
+        "Two million folks strong,",
+        "Marching for Earth's future bright,",
+        "Protest fills the air."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 353,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 353,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 28.635306119918823,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 01",
+      "inspiration": "Publication of Species Plantarum by Linnaeus, and the formal start date of plant taxonomy adopted by the International Code of Botanical Nomenclature.",
+      "lines": [
+        "New science took flight,",
+        "Linnaeus's work was born here",
+        "A world of plants known."
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 1742,
+      "tok": {
+        "pool": 0,
+        "repair": 1348,
+        "salvage": 0,
+        "gen": 394,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 90.21971917152405,
+        "salvage": 0.0,
+        "gen": 37.21751165390015,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        1,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 19",
+      "inspiration": "Venera program: Venera 1 becomes the first man-made object to fly by another planet by passing Venus (the probe had lost contact with Earth a month earlier and did not send back any data).",
+      "lines": [
+        "Venusian probe flies,",
+        "Program's plan takes a turn;",
+        "Engine whirring starts"
+      ],
+      "counts": [
+        5,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 662,
+      "tok": {
+        "pool": 0,
+        "repair": 383,
+        "salvage": 0,
+        "gen": 279,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 25.131262063980103,
+        "salvage": 0.0,
+        "gen": 20.405288457870483,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        1
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 10",
+      "inspiration": "The first edition of the Encyclop\u00e6dia Britannica is published.",
+      "lines": [
+        "First book's debut year,",
+        "Encyclop Britannica",
+        "Published in the town"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 2130,
+      "tok": {
+        "pool": 0,
+        "repair": 987,
+        "salvage": 0,
+        "gen": 1143,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 66.62948870658875,
+        "salvage": 0.0,
+        "gen": 91.72765731811523,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

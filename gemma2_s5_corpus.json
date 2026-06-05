@@ -1,0 +1,1790 @@
+{
+  "meta": {
+    "model": "gemma2:2b",
+    "strategy": "repair",
+    "cycles": 30,
+    "seed": 5,
+    "timestamp": "2026-06-04T15:34:34",
+    "config": {
+      "POOL_SIZE": 6,
+      "MAX_LINE_FAILURES": [
+        3,
+        5,
+        3
+      ],
+      "MAX_REPAIR_DISTANCE": 3,
+      "REPAIR_TEMPS": [
+        0.3,
+        0.15,
+        0.5,
+        0.2,
+        0.6,
+        0.35,
+        0.55
+      ]
+    },
+    "total_time_s": 1747.11
+  },
+  "aggregate": {
+    "success": 28,
+    "success_rate": 0.9333,
+    "avg_tokens": 740.8,
+    "tokens_per_success": 555.9,
+    "tolerance_saves": 7,
+    "bailouts": 11,
+    "line_failures": [
+      15,
+      19,
+      10
+    ],
+    "tokens_by_phase": {
+      "pool": 0,
+      "repair": 9783,
+      "salvage": 0,
+      "gen": 12442,
+      "rerank": 0
+    }
+  },
+  "cycles": [
+    {
+      "date": "October 09",
+      "inspiration": "Hurricane Milton makes landfall in Siesta Key, Florida, as a Category 3 hurricane, causing US$34.3 billion in damage only two weeks after Hurricane Helene impacted the state.",
+      "lines": [
+        "Storm clouds gather dark,",
+        "Milton's fury strikes the shore,",
+        "Waves crash, sands erode."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 1028,
+      "tok": {
+        "pool": 0,
+        "repair": 563,
+        "salvage": 0,
+        "gen": 465,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 36.77530360221863,
+        "salvage": 0.0,
+        "gen": 40.816330671310425,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 12",
+      "inspiration": "North Korea successfully launches its first satellite, Kwangmy\u014fngs\u014fng-3 Unit 2.",
+      "lines": [
+        "North lands launch their flight,",
+        "First satellite takes to sky,",
+        "Kwangmyung shines bright."
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 371,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 371,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 32.78878331184387,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 27",
+      "inspiration": "Radiation from an explosion on the magnetar SGR 1806-20 reaches Earth. It is the brightest extrasolar event known to have been witnessed on the planet.",
+      "lines": [
+        "Radio waves flow,",
+        "Blast from the magnetar's heart",
+        "Earth now sees bright light"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 352,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 352,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 24.92909836769104,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 21",
+      "inspiration": "Apollo program: Apollo 8 is launched from the Kennedy Space Center, placing its crew on a lunar trajectory for the first visit to another celestial body by humans.",
+      "lines": [
+        "Earth's child takes flight bold,",
+        "In black sky a rocket flies,",
+        "From center to moon."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 286,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 286,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 21.120346546173096,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 01",
+      "inspiration": "Carrington Event started - the most intense geomagnetic storm in recorded history.",
+      "lines": [
+        "Strange lights in the sky",
+        "Earth shook, a storm of power",
+        "Carrington's event"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 285,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 285,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 20.576008319854736,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 25",
+      "inspiration": "The first Great Moon Hoax article is published in The New York Sun, announcing the discovery of life and civilization on the Moon.",
+      "lines": [
+        "First a story told,",
+        "Great hoax in news was spread wide,",
+        "Moon's life's tale is spun."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 1621,
+      "tok": {
+        "pool": 0,
+        "repair": 974,
+        "salvage": 0,
+        "gen": 647,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 64.92658972740173,
+        "salvage": 0.0,
+        "gen": 53.08131456375122,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 21",
+      "inspiration": "The \"Surgeon's Photograph\", the most famous photo allegedly showing the Loch Ness Monster, is published in the Daily Mail (in 1994, it is revealed to be a hoax).",
+      "lines": [
+        "Surgeon took a pic,",
+        "Famous photo, it is said",
+        "Loch's mystery shown"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 301,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 301,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 21.700413465499878,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 06",
+      "inspiration": "Justin Trudeau announces his resignation as leader of the Liberal Party of Canada and Prime Minister of Canada after nine years in office.",
+      "lines": [
+        "Trudeau steps aside,",
+        "News of his resignation",
+        "Paints Canada's scene."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 1583,
+      "tok": {
+        "pool": 0,
+        "repair": 944,
+        "salvage": 0,
+        "gen": 639,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 61.888221740722656,
+        "salvage": 0.0,
+        "gen": 52.0986385345459,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 12",
+      "inspiration": "NEAR Shoemaker spacecraft touches down in the \"saddle\" region of 433 Eros, becoming the first spacecraft to land on an asteroid.",
+      "lines": [
+        "Near craft a descent",
+        "On Eros, in its wide space,",
+        "Touching down the rock."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 325,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 325,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 24.801464557647705,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 28",
+      "inspiration": "The Carrington event is the strongest geomagnetic storm on record to strike the Earth. Electrical telegraph service is widely disrupted.",
+      "lines": [
+        "Bright stars dance above,",
+        "A mighty surge of power,",
+        "Earth feels the shock's might"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 498,
+      "tok": {
+        "pool": 0,
+        "repair": 199,
+        "salvage": 0,
+        "gen": 299,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 13.823234558105469,
+        "salvage": 0.0,
+        "gen": 22.02813410758972,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 13",
+      "inspiration": "George Frideric Handel's oratorio Messiah makes its world premiere in Dublin, Ireland.",
+      "lines": [
+        "Music fills the air,",
+        "Grandiose score for a time",
+        "Stars shine bright tonight."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 317,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 317,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 29.48339819908142,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 04",
+      "inspiration": "Mark Spitz becomes the first competitor to win seven medals at a single Olympic Games.",
+      "lines": [
+        "Mark Spitz wins gold,",
+        "First to take seven medals",
+        "At a single Games"
+      ],
+      "counts": [
+        4,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 3710,
+      "tok": {
+        "pool": 0,
+        "repair": 2495,
+        "salvage": 0,
+        "gen": 1215,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 167.0978455543518,
+        "salvage": 0.0,
+        "gen": 93.52511692047119,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        9,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 08",
+      "inspiration": "KDKA in Pittsburgh's Forbes Field conducts the first live broadcast of a football game.",
+      "lines": [
+        "Engine's bright morning launch",
+        "Pitsburgh's field, broadcast starts",
+        "First, live game takes flight"
+      ],
+      "counts": [
+        6,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 2951,
+      "tok": {
+        "pool": 0,
+        "repair": 1799,
+        "salvage": 0,
+        "gen": 1152,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 122.44527339935303,
+        "salvage": 0.0,
+        "gen": 88.23732352256775,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        5,
+        0
+      ],
+      "bailouts": 2,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 24",
+      "inspiration": "Soviet satellite Kosmos 954, with a nuclear reactor on board, burns up in Earth's atmosphere, scattering radioactive debris over Canada's Northwest Territories. Only 1% is recovered.",
+      "lines": [
+        "Soviet craft flies high,",
+        "Burning bright in the sky's blue,",
+        "Radioactive"
+      ],
+      "counts": [
+        6,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 322,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 322,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 22.757898569107056,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 14",
+      "inspiration": "The foreshock of a major earthquake occurs in Kumamoto, Japan.",
+      "lines": [
+        "Earth shakes with a roar,",
+        "Foreshock's force sends shockwaves,",
+        "Japan feels quake."
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 1010,
+      "tok": {
+        "pool": 0,
+        "repair": 586,
+        "salvage": 0,
+        "gen": 424,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 39.625951528549194,
+        "salvage": 0.0,
+        "gen": 40.39665699005127,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        3
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 06",
+      "inspiration": "Kerry Wood strikes out 20 Houston Astros to tie the major league record held by Roger Clemens. He threw a one-hitter and did not walk a batter in his fifth career start.",
+      "lines": [
+        "Young Wood's fastball flew",
+        "Twenty strikes, a feat so rare",
+        "Record tied anew"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 348,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 348,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 24.86599111557007,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 06",
+      "inspiration": "The first Major League Baseball All-Star Game is played in Chicago's Comiskey Park. The American League defeated the National League 4\u20132.",
+      "lines": [
+        "First game in park's sight",
+        "Players clash, a battle fought",
+        "Score tells victory"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 308,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 308,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 23.535428524017334,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 05",
+      "inspiration": "In Calabria, a sequence of strong earthquakes begins.",
+      "lines": [
+        "Strong tremors shake fast,",
+        "A sequence of events starts,",
+        "The Earth feels the fear."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 307,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 307,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 23.969524383544922,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 20",
+      "inspiration": "The \"Johnny Bright incident\" occurs during a football game between the Drake Bulldogs and Oklahoma A&M Aggies.",
+      "lines": [
+        "Bright boy falls and cries",
+        "Anger sparks, a clash of wills",
+        "Game in dark, then ends"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 350,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 350,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 24.746402740478516,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 05",
+      "inspiration": "Peter O'Connor sets the first World Athletics recognised long jump world record of 24\u00a0ft 11.75\u00a0in (7.6137\u00a0m), a record that would stand for 20 years.",
+      "lines": [
+        "Irish track's young star,",
+        "Connor jumps far distance wide.",
+        "Record stands so long."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 275,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 275,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 20.093458890914917,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 01",
+      "inspiration": "Titanic becomes the first film to gross over $1 billion worldwide.",
+      "lines": [
+        "Titanic film first,",
+        "Grossing over billion wide,",
+        "Voyage's tragic end"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 274,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 274,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 19.830047369003296,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 07",
+      "inspiration": "Thomas Edison makes a kinetoscopic film of someone sneezing. On the same day, his employee, William Kennedy Dickson, receives a patent for motion picture film.",
+      "lines": [
+        "Light flickers and shines,",
+        "Camera captures a scene,",
+        "Figure sneezes quick"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 659,
+      "tok": {
+        "pool": 0,
+        "repair": 375,
+        "salvage": 0,
+        "gen": 284,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 24.393710613250732,
+        "salvage": 0.0,
+        "gen": 20.422940254211426,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        1
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 06",
+      "inspiration": "Launch of Early Bird, the first commercial communications satellite to be placed in geosynchronous orbit.",
+      "lines": [
+        "Spacecraft takes flight,",
+        "Early Bird lifts off its nest,",
+        "First to join the dance."
+      ],
+      "counts": [
+        4,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 1896,
+      "tok": {
+        "pool": 0,
+        "repair": 1464,
+        "salvage": 0,
+        "gen": 432,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 93.8047616481781,
+        "salvage": 0.0,
+        "gen": 43.48196625709534,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        4,
+        3
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 10",
+      "inspiration": "Bam Adebayo of the Miami Heat recorded the second-highest scoring game in NBA history with 83 Points.",
+      "lines": [
+        "Adebayo scored",
+        "Miami Heat, a record made",
+        "Points soared so high."
+      ],
+      "counts": [
+        4,
+        8,
+        4
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 396,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 396,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 35.66391587257385,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "June 07",
+      "inspiration": "Sony launches Betamax, the first videocassette recorder format.",
+      "lines": [
+        "Sony's name rings out,",
+        "New tapes in a swirling cloud,",
+        "First machine takes hold."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 301,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 301,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 27.237612009048462,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 22",
+      "inspiration": "Red Dye No. 4 is banned by the US Food and Drug Administration after it is discovered that it causes tumors in the bladders of dogs.",
+      "lines": [
+        "Red dye now banned,",
+        "Engine's harsh decree falls",
+        "Dogs suffer the pain."
+      ],
+      "counts": [
+        4,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 725,
+      "tok": {
+        "pool": 0,
+        "repair": 185,
+        "salvage": 0,
+        "gen": 540,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 11.947693586349487,
+        "salvage": 0.0,
+        "gen": 44.54559516906738,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 07",
+      "inspiration": "WXYC, the student radio station of the University of North Carolina at Chapel Hill, launches the world's first internet radio broadcast.",
+      "lines": [
+        "Engine's strong signals",
+        "Radio waves fill air space",
+        "Station's voice rings out"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 538,
+      "tok": {
+        "pool": 0,
+        "repair": 199,
+        "salvage": 0,
+        "gen": 339,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 13.701048135757446,
+        "salvage": 0.0,
+        "gen": 30.67671275138855,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "March 23",
+      "inspiration": "NASA launches Gemini 3, the United States' first two-man space flight (crew: Gus Grissom and John Young).",
+      "lines": [
+        "Space agency flies,",
+        "Two men soar on Gemini's",
+        "Flight takes to the stars."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 271,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 271,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 19.804314136505127,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 13",
+      "inspiration": "George Frideric Handel's oratorio Messiah makes its world premiere in Dublin, Ireland.",
+      "lines": [
+        "Grand music, it plays",
+        "Glory shines in dark halls deep",
+        "City's song rings out"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 250,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 250,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 18.466262340545654,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "May 01",
+      "inspiration": "Publication of Species Plantarum by Linnaeus, and the formal start date of plant taxonomy adopted by the International Code of Botanical Nomenclature.",
+      "lines": [
+        "New book on the shelf,",
+        "Words of plants to classify,",
+        "Naming takes place."
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 367,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 367,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 32.33642053604126,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

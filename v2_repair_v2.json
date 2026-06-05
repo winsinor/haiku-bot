@@ -1,0 +1,1790 @@
+{
+  "meta": {
+    "model": "qwen2.5:1.5b",
+    "strategy": "repair",
+    "cycles": 30,
+    "seed": 1,
+    "timestamp": "2026-06-04T00:50:45",
+    "config": {
+      "POOL_SIZE": 6,
+      "MAX_LINE_FAILURES": [
+        3,
+        5,
+        3
+      ],
+      "MAX_REPAIR_DISTANCE": 3,
+      "REPAIR_TEMPS": [
+        0.3,
+        0.15,
+        0.5,
+        0.2,
+        0.6,
+        0.35,
+        0.55
+      ]
+    },
+    "total_time_s": 1542.05
+  },
+  "aggregate": {
+    "success": 14,
+    "success_rate": 0.4667,
+    "avg_tokens": 965.9,
+    "tokens_per_success": 648.2,
+    "tolerance_saves": 5,
+    "bailouts": 77,
+    "line_failures": [
+      93,
+      116,
+      34
+    ],
+    "tokens_by_phase": {
+      "pool": 0,
+      "repair": 18907,
+      "salvage": 0,
+      "gen": 10069,
+      "rerank": 0
+    }
+  },
+  "cycles": [
+    {
+      "date": "March 19",
+      "inspiration": "American explorer Benjamin Morrell departs Antarctica after a voyage later plagued by claims of fraud.",
+      "lines": [
+        "American explorer departs,",
+        "Benjamin Morrell's voyage to Antarctica,",
+        "Truths lie beneath."
+      ],
+      "counts": [
+        9,
+        12,
+        4
+      ],
+      "ranges": [
+        [
+          9,
+          9
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 497,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 497,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 25.62881374359131,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 09",
+      "inspiration": "The Beatles make their first appearance on The Ed Sullivan Show, performing before a record-setting audience of 73 million viewers across the United States.",
+      "lines": [
+        "Beatles' debut on TV",
+        "A crowd of millions watches",
+        "Shine in Liverpool's night"
+      ],
+      "counts": [
+        7,
+        7,
+        6
+      ],
+      "ranges": [
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1391,
+      "tok": {
+        "pool": 0,
+        "repair": 1031,
+        "salvage": 0,
+        "gen": 360,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 47.43376922607422,
+        "salvage": 0.0,
+        "gen": 21.308218955993652,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        5,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 16",
+      "inspiration": "The Southern Cross expedition led by Carsten Borchgrevink achieves a new Farthest South of 78\u00b0 50'S, making the first landing at the Great Ice Barrier.",
+      "lines": [
+        "Southern lights dance,",
+        "Crossing skies with icy pride\u2014",
+        "Carsten, first to seize."
+      ],
+      "counts": [
+        4,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 4,
+      "tokens": 1303,
+      "tok": {
+        "pool": 0,
+        "repair": 875,
+        "salvage": 0,
+        "gen": 428,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 42.131054639816284,
+        "salvage": 0.0,
+        "gen": 21.364360570907593,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        5,
+        3
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 16",
+      "inspiration": "The first British Empire Games are opened in Hamilton, Ontario, by the Governor General of Canada, the Viscount Willingdon.",
+      "lines": [
+        "Three days before dawn,",
+        "The Games in Hamilton's hall",
+        "First Brits celebrate."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 308,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 308,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 12.03592848777771,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 13",
+      "inspiration": "James Braid first sees a demonstration of animal magnetism by Charles Lafontaine, which leads to his study of the subject he eventually calls hypnotism.",
+      "lines": [
+        "James Braid sees",
+        "Charles Lafontaine's demonstration",
+        "Animal magnetism awakes"
+      ],
+      "counts": [
+        3,
+        9,
+        10
+      ],
+      "ranges": [
+        [
+          3,
+          4
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 826,
+      "tok": {
+        "pool": 0,
+        "repair": 447,
+        "salvage": 0,
+        "gen": 379,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 21.321985483169556,
+        "salvage": 0.0,
+        "gen": 22.154308795928955,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 04",
+      "inspiration": "Napoleon abdicates (conditionally) for the first time and names his son Napoleon II as Emperor of the French, followed by unconditional abdication two days later.",
+      "lines": [
+        "Napoleon's hand clench",
+        "First abdication time now",
+        "Peace falls silent."
+      ],
+      "counts": [
+        6,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 1,
+      "tokens": 772,
+      "tok": {
+        "pool": 0,
+        "repair": 451,
+        "salvage": 0,
+        "gen": 321,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 23.738689422607422,
+        "salvage": 0.0,
+        "gen": 12.803346395492554,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        2,
+        4,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 01",
+      "inspiration": "The start of the first Scout camp on Brownsea Island, the origin of the worldwide Scouting movement.",
+      "lines": [
+        "Scout camp flames sing bright",
+        "On the wind, they dance and grow",
+        "Worldwide hear their call"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 921,
+      "tok": {
+        "pool": 0,
+        "repair": 594,
+        "salvage": 0,
+        "gen": 327,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 24.520458221435547,
+        "salvage": 0.0,
+        "gen": 15.771604061126709,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 14",
+      "inspiration": "Mariner 4 flyby of Mars takes the first close-up photos of another planet. The photographs take approximately six hours to be transmitted back to Earth.",
+      "lines": [
+        "Mariner 4 flies by,",
+        "Mars' surface captured in light,",
+        "First close-up photos."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 282,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 282,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 11.328317165374756,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "October 25",
+      "inspiration": "Dutch sea-captain Dirk Hartog makes the second recorded landfall by a European on Australian soil, at the later-named Dirk Hartog Island off the West Australian coast.",
+      "lines": [
+        "[Dutch] Captain Dirk Hartog sails",
+        "Dirk charts a new sea's edge,",
+        "Hartog sets foot."
+      ],
+      "counts": [
+        7,
+        6,
+        4
+      ],
+      "ranges": [
+        [
+          7,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1621,
+      "tok": {
+        "pool": 0,
+        "repair": 1273,
+        "salvage": 0,
+        "gen": 348,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 58.622732400894165,
+        "salvage": 0.0,
+        "gen": 19.90052103996277,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        9,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 23",
+      "inspiration": "A 7.9 Mw\u202f earthquake occurs in the Gulf of Alaska. It is tied as the sixth-largest earthquake ever recorded in the United States, but there are no reports of significant damage or fatalities.",
+      "lines": [
+        "Shallow waves tremble",
+        "Seafloor cracks open, earth cries",
+        "Alaska's quake births"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 547,
+      "tok": {
+        "pool": 0,
+        "repair": 226,
+        "salvage": 0,
+        "gen": 321,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 10.977534294128418,
+        "salvage": 0.0,
+        "gen": 14.917827844619751,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 09",
+      "inspiration": "Shannon Eastin becomes the first woman to officiate an NFL game.",
+      "lines": [
+        "Shannon steps on field",
+        "First woman's voice rings out loud",
+        "Rallys start to grow"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1008,
+      "tok": {
+        "pool": 0,
+        "repair": 710,
+        "salvage": 0,
+        "gen": 298,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 37.37680768966675,
+        "salvage": 0.0,
+        "gen": 17.5079665184021,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        10,
+        0
+      ],
+      "bailouts": 3,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 26",
+      "inspiration": "The opera Agrippina by George Frideric Handel premiered in Venice.",
+      "lines": [
+        "Opera stage in gloom",
+        "Claudius fades, Nero gleams",
+        "Venice breathes new sound"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 308,
+      "tok": {
+        "pool": 0,
+        "repair": 0,
+        "salvage": 0,
+        "gen": 308,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 0.0,
+        "salvage": 0.0,
+        "gen": 12.292001485824585,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 19",
+      "inspiration": "The Ingenuity helicopter becomes the first aircraft to achieve flight on another planet.",
+      "lines": [
+        "Ing-enuity soars high",
+        "On Mars' thin air,",
+        "First aircraft to soar."
+      ],
+      "counts": [
+        6,
+        4,
+        5
+      ],
+      "ranges": [
+        [
+          6,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1516,
+      "tok": {
+        "pool": 0,
+        "repair": 1130,
+        "salvage": 0,
+        "gen": 386,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 47.12517046928406,
+        "salvage": 0.0,
+        "gen": 20.633870840072632,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        12,
+        0,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 11",
+      "inspiration": "The Beatles record their first album, Please Please Me.",
+      "lines": [
+        "Beatles' hands on tape",
+        "Please please me, they sing",
+        "World changed in a spin"
+      ],
+      "counts": [
+        5,
+        5,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 488,
+      "tok": {
+        "pool": 0,
+        "repair": 223,
+        "salvage": 0,
+        "gen": 265,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 12.094123601913452,
+        "salvage": 0.0,
+        "gen": 12.26826524734497,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 01",
+      "inspiration": "The present-day location of Rio de Janeiro, Brazil, is first explored by the Portuguese.",
+      "lines": [
+        "[Present-day location of Rio de Janeiro, Brazil]",
+        "First map explores new land",
+        "Portuguese eyes on the horizon"
+      ],
+      "counts": [
+        15,
+        6,
+        9
+      ],
+      "ranges": [
+        [
+          14,
+          15
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 719,
+      "tok": {
+        "pool": 0,
+        "repair": 377,
+        "salvage": 0,
+        "gen": 342,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 16.1719708442688,
+        "salvage": 0.0,
+        "gen": 20.888636589050293,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 21",
+      "inspiration": "NASA's MER-A (the Mars Rover Spirit) ceases communication with mission control. The problem lies in the management of its flash memory and is fixed remotely from Earth on February 6.",
+      "lines": [
+        "NASA Mars Spirit falls",
+        "Communication ends on Spirit's final day",
+        "Silence fills the skies"
+      ],
+      "counts": [
+        6,
+        12,
+        5
+      ],
+      "ranges": [
+        [
+          6,
+          6
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1153,
+      "tok": {
+        "pool": 0,
+        "repair": 826,
+        "salvage": 0,
+        "gen": 327,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 38.78793978691101,
+        "salvage": 0.0,
+        "gen": 18.42094850540161,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 01",
+      "inspiration": "Carrington Event started - the most intense geomagnetic storm in recorded history.",
+      "lines": [
+        "Carrington launch",
+        "Three days of auroral lights",
+        "Sun's fury on Earth"
+      ],
+      "counts": [
+        4,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1557,
+      "tok": {
+        "pool": 0,
+        "repair": 1231,
+        "salvage": 0,
+        "gen": 326,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 58.19318985939026,
+        "salvage": 0.0,
+        "gen": 17.845441341400146,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        15,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "July 22",
+      "inspiration": "Soviet space dogs: Dezik and Tsygan were launched into a sub-orbital spaceflight from Kapustin Yar and became the first dogs to fly in space and the first to safely return.",
+      "lines": [
+        "Soviet dogs rise",
+        "Into space's cold embrace",
+        "Dezik, Tsygan soar"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 530,
+      "tok": {
+        "pool": 0,
+        "repair": 213,
+        "salvage": 0,
+        "gen": 317,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 10.07014513015747,
+        "salvage": 0.0,
+        "gen": 14.54489803314209,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "April 14",
+      "inspiration": "The foreshock of a major earthquake occurs in Kumamoto, Japan.",
+      "lines": [
+        "Kumamoto feels its coming call",
+        "Earth bends, sky shifts",
+        "foreshock major quake occurs in Kumamoto, Japan."
+      ],
+      "counts": [
+        9,
+        4,
+        15
+      ],
+      "ranges": [
+        [
+          9,
+          9
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1220,
+      "tok": {
+        "pool": 0,
+        "repair": 839,
+        "salvage": 0,
+        "gen": 381,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 39.86316919326782,
+        "salvage": 0.0,
+        "gen": 20.888464212417603,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        5,
+        0
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "December 01",
+      "inspiration": "Diarist John Evelyn records skating on the frozen lake in St James's Park, London, watched by Charles II and Queen Catherine.",
+      "lines": [
+        "Engine ice glides",
+        "Charles II watches in amazement.",
+        "Queen Catherine smiles."
+      ],
+      "counts": [
+        4,
+        9,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          7
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1687,
+      "tok": {
+        "pool": 0,
+        "repair": 1374,
+        "salvage": 0,
+        "gen": 313,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 62.97540831565857,
+        "salvage": 0.0,
+        "gen": 18.940755367279053,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        4,
+        10,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 08",
+      "inspiration": "In Huntsville, Alabama, US President Dwight D. Eisenhower formally dedicates the Marshall Space Flight Center (NASA had already activated the facility on July 1).",
+      "lines": [
+        "A rocket climbs high",
+        "Stars align in a new sky",
+        "Launch pads echo cheers"
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 1,
+      "tokens": 467,
+      "tok": {
+        "pool": 0,
+        "repair": 182,
+        "salvage": 0,
+        "gen": 285,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 6.796814680099487,
+        "salvage": 0.0,
+        "gen": 11.462486505508423,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        0,
+        0
+      ],
+      "bailouts": 0,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 16",
+      "inspiration": "The first British Empire Games are opened in Hamilton, Ontario, by the Governor General of Canada, the Viscount Willingdon.",
+      "lines": [
+        "[seven-syllable line]",
+        "One step closer to equality",
+        "All nations unite under one sky"
+      ],
+      "counts": [
+        6,
+        9,
+        9
+      ],
+      "ranges": [
+        [
+          6,
+          6
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          11
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 851,
+      "tok": {
+        "pool": 0,
+        "repair": 405,
+        "salvage": 0,
+        "gen": 446,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 18.334775686264038,
+        "salvage": 0.0,
+        "gen": 26.83100152015686,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 08",
+      "inspiration": "In Huntsville, Alabama, US President Dwight D. Eisenhower formally dedicates the Marshall Space Flight Center (NASA had already activated the facility on July 1).",
+      "lines": [
+        "Three cities rise in flight",
+        "Across Alabama's vast plains",
+        "History soars on wings"
+      ],
+      "counts": [
+        6,
+        8,
+        6
+      ],
+      "ranges": [
+        [
+          6,
+          6
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 899,
+      "tok": {
+        "pool": 0,
+        "repair": 791,
+        "salvage": 0,
+        "gen": 108,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 35.11254024505615,
+        "salvage": 0.0,
+        "gen": 12.075984239578247,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        6,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "June 08",
+      "inspiration": "The first World Oceans Day is celebrated, coinciding with the Earth Summit held in Rio de Janeiro, Brazil.",
+      "lines": [
+        "Celestial seas vast,",
+        "Deep blue shores shine bright.",
+        "Rio's summit calls."
+      ],
+      "counts": [
+        5,
+        5,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 886,
+      "tok": {
+        "pool": 0,
+        "repair": 583,
+        "salvage": 0,
+        "gen": 303,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 25.792665719985962,
+        "salvage": 0.0,
+        "gen": 13.674092292785645,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        5,
+        0,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 08",
+      "inspiration": "Rupert Bear, illustrated by Mary Tourtel makes his first appearance in print.",
+      "lines": [
+        "Rupert Bear appears",
+        "Mary's hands illustrated",
+        "First comic joy"
+      ],
+      "counts": [
+        5,
+        7,
+        4
+      ],
+      "ranges": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1321,
+      "tok": {
+        "pool": 0,
+        "repair": 974,
+        "salvage": 0,
+        "gen": 347,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 49.413373947143555,
+        "salvage": 0.0,
+        "gen": 18.711074590682983,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        11,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "August 10",
+      "inspiration": "Two earthquakes affect New Zealand. A 7.0 Mw\u202f shock (intensity VI (Strong)) in the South Island was followed nine hours later by a 6.4 Mw\u202f event (intensity VII (Very strong)) in the North Island.",
+      "lines": [
+        "Three quakes shake Zealand",
+        "South's shock echoes nine hours",
+        "Footsteps linger wide."
+      ],
+      "counts": [
+        5,
+        7,
+        5
+      ],
+      "ranges": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 2,
+      "tokens": 736,
+      "tok": {
+        "pool": 0,
+        "repair": 395,
+        "salvage": 0,
+        "gen": 341,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 17.237979650497437,
+        "salvage": 0.0,
+        "gen": 15.067661762237549,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        0,
+        1
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "January 14",
+      "inspiration": "Elvis Presley's concert Aloha from Hawaii is broadcast live via satellite, and sets the record as the most watched broadcast by an individual entertainer in television history.",
+      "lines": [
+        "Elvis on stage,",
+        "A guitar and a smile,",
+        "Hawaii's broadcast."
+      ],
+      "counts": [
+        4,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "success": true,
+      "source": "repair",
+      "audit_recovered": true,
+      "gens": 2,
+      "tokens": 519,
+      "tok": {
+        "pool": 0,
+        "repair": 222,
+        "salvage": 0,
+        "gen": 297,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 11.821347951889038,
+        "salvage": 0.0,
+        "gen": 13.386103391647339,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        0,
+        5,
+        0
+      ],
+      "bailouts": 1,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "September 21",
+      "inspiration": "A 5.6 Mw earthquake shakes the Albanian port of Durr\u00ebs. Forty-nine people are injured in the capital, Tirana.",
+      "lines": [
+        "Three days of quakes end",
+        "Albanian shores shook violently",
+        "Durr\u00ebs cries out weakly"
+      ],
+      "counts": [
+        5,
+        10,
+        6
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1498,
+      "tok": {
+        "pool": 0,
+        "repair": 1082,
+        "salvage": 0,
+        "gen": 416,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 54.00974702835083,
+        "salvage": 0.0,
+        "gen": 22.474145650863647,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        1,
+        15,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "February 06",
+      "inspiration": "The first 86 African American immigrants sponsored by the American Colonization Society depart New York to start a settlement in present-day Liberia.",
+      "lines": [
+        "Four eyes watch,",
+        "An empty land calls back",
+        "Silent winds speak words."
+      ],
+      "counts": [
+        3,
+        6,
+        5
+      ],
+      "ranges": [
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1423,
+      "tok": {
+        "pool": 0,
+        "repair": 1035,
+        "salvage": 0,
+        "gen": 388,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 47.40231227874756,
+        "salvage": 0.0,
+        "gen": 23.04439401626587,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        9,
+        0,
+        3
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "date": "November 24",
+      "inspiration": "Anna Sewell's animal welfare novel Black Beauty is published.",
+      "lines": [
+        "Anna Sewell writes",
+        "Black Beauty: Animal rights' dawn",
+        "Ends a new era in stories"
+      ],
+      "counts": [
+        5,
+        8,
+        8
+      ],
+      "ranges": [
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "success": false,
+      "source": "repair",
+      "audit_recovered": false,
+      "gens": 4,
+      "tokens": 1722,
+      "tok": {
+        "pool": 0,
+        "repair": 1418,
+        "salvage": 0,
+        "gen": 304,
+        "rerank": 0
+      },
+      "sec": {
+        "pool": 0.0,
+        "repair": 67.12630009651184,
+        "salvage": 0.0,
+        "gen": 17.284472465515137,
+        "rerank": 0.0
+      },
+      "line_failures": [
+        3,
+        11,
+        6
+      ],
+      "bailouts": 4,
+      "pool_valid": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

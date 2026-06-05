@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+~/.haiku_wiki_cache.json
+~/.haiku_record.jsonl
