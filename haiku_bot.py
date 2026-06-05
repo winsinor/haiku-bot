@@ -435,6 +435,63 @@ def generate(model, event_text, summary):
     return lines, counts, total_tokens, "failed"
 
 
+# ----------------------------- Model management -----------------------------
+def installed_models():
+    try:
+        r = requests.get(f"{OLLAMA_BASE}/api/tags", timeout=5)
+        r.raise_for_status()
+        return [m["name"] for m in r.json().get("models", [])]
+    except Exception:
+        return None
+
+
+def pull_model(name):
+    print(f"  Pulling {name}...")
+    r = requests.post(f"{OLLAMA_BASE}/api/pull", json={"name": name, "stream": True},
+                      stream=True, timeout=600)
+    r.raise_for_status()
+    for line in r.iter_lines():
+        if not line:
+            continue
+        data = json.loads(line)
+        status = data.get("status", "")
+        total = data.get("total", 0)
+        completed = data.get("completed", 0)
+        if total:
+            pct = int(100 * completed / total)
+            sys.stderr.write(f"\r  {status} {pct}%  ")
+        else:
+            sys.stderr.write(f"\r  {status}  ")
+        sys.stderr.flush()
+        if status == "success":
+            sys.stderr.write("\r" + " " * 40 + "\r")
+            print(f"  Pulled {name}.")
+            return
+    raise RuntimeError(f"Pull ended without success status")
+
+
+def ensure_model(name):
+    models = installed_models()
+    if models is None:
+        print("Could not reach Ollama. Is it running?")
+        sys.exit(1)
+    # match exact name or name without tag against installed list
+    def matches(installed):
+        return installed == name or installed.split(":")[0] == name.split(":")[0]
+    if any(matches(m) for m in models):
+        return
+    print(f"  Model '{name}' is not installed.")
+    try:
+        answer = input(f"  Pull it now? [Y/n] ").strip().lower()
+    except EOFError:
+        answer = "y"
+    if answer in ("", "y", "yes"):
+        pull_model(name)
+    else:
+        print(f"  To pull manually: ollama pull {name}")
+        sys.exit(1)
+
+
 # ----------------------------- Main -----------------------------
 def main():
     p = argparse.ArgumentParser(description="Daily haiku bot")
@@ -442,6 +499,8 @@ def main():
     p.add_argument("--date", help="Date to draw events from (MM-DD), default: today")
     p.add_argument("--no-cache", action="store_true", help="Disable Wikipedia cache")
     args = p.parse_args()
+
+    ensure_model(args.model)
 
     if args.date:
         try:

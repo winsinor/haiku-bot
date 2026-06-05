@@ -34,6 +34,28 @@ Example output:
   5 / 7 / 5  ·  287 tokens  ·  3.8s  ·  via pool
 ```
 
+## Model
+
+Defaults to `gemma2:2b`. If the model isn't installed, the script will prompt you to pull it automatically.
+
+To use a different model:
+
+```bash
+python3 haiku_bot.py --model llama3.2:1b
+```
+
+To pull a model manually:
+
+```bash
+ollama pull gemma2:2b
+```
+
+To see what models you have installed:
+
+```bash
+ollama list
+```
+
 ## Flags
 
 | Flag | Description |
