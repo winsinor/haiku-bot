@@ -574,7 +574,7 @@ def main():
     else:
         print("    (no haiku generated)")
     print()
-    print(f"  {cs}  ·  {tokens} tokens  ·  {elapsed:.1f}s  ·  via {path}")
+    print(f"  {cs}  ·  {tokens} tokens  ·  {elapsed:.1f}s")
     print()
 
     if path == "failed":
