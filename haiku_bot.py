@@ -419,24 +419,29 @@ def try_repair(model, lines, counts):
     return lines, counts, ok, tokens
 
 
-def generate(model, event_text, summary):
+def generate(model, event_text, summary, strategy="repair"):
     total_tokens = 0
-
     status("Generating haiku...")
-    assembled, tok = try_pool(model, event_text, summary)
-    total_tokens += tok
-    if assembled:
-        ok, lines, counts = verify_haiku("\n".join(assembled))
-        if ok:
-            return lines, counts, total_tokens, "pool"
 
+    if strategy in ("pool", "hybrid"):
+        assembled, tok = try_pool(model, event_text, summary)
+        total_tokens += tok
+        if assembled:
+            ok, lines, counts = verify_haiku("\n".join(assembled))
+            if ok:
+                return lines, counts, total_tokens, "pool"
+        if strategy == "pool":
+            status("Could not produce a valid haiku.")
+            return [], [], total_tokens, "failed"
+
+    # repair / hybrid fallback: generate then fix
     raw, tok = call_ollama(model, gen_prompt(event_text, summary), temperature=0.7, num_predict=100)
     total_tokens += tok
     ok, lines, counts = verify_haiku(extract_haiku(raw))
     if ok:
         return lines, counts, total_tokens, "direct"
     if len(lines) == 3:
-        status("  Repairing syllable counts...")
+        status("  Repairing...")
         lines, counts, ok, tok = try_repair(model, lines, counts)
         total_tokens += tok
         if ok:
@@ -512,6 +517,8 @@ def main():
     p.add_argument("--date", help="Date to draw events from (MM-DD), default: today")
     p.add_argument("--no-cache", action="store_true", help="Disable Wikipedia cache")
     p.add_argument("--quiet", action="store_true", help="Skip status messages, output haiku only")
+    p.add_argument("--strategy", choices=["repair", "pool", "hybrid"], default="repair",
+                   help="Generation strategy (default: repair)")
     args = p.parse_args()
 
     VERBOSE = not args.quiet
@@ -555,7 +562,7 @@ def main():
         print()
 
     t0 = time.time()
-    lines, counts, tokens, path = generate(args.model, event_text, summary)
+    lines, counts, tokens, path = generate(args.model, event_text, summary, args.strategy)
     elapsed = time.time() - t0
 
     date_str = today.strftime("%B %-d")
