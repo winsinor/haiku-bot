@@ -39,6 +39,7 @@ def main():
         print(f"Connecting to printer {PRINTER_MAC}...")
         with ReceiptPrinter() as printer:
             print("Connected. Sending print job...")
+            printer.init()
             printer.print_text(text)
             printer.feed()
             printer.cut()

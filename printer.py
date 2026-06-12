@@ -18,6 +18,9 @@ GS = b"\x1d"
 INIT = ESC + b"@"        # reset printer state
 CUT = GS + b"V" + b"\x00"  # partial/full cut, ignored if unsupported
 
+SIZE_NORMAL = GS + b"!" + b"\x00"  # normal width/height
+SIZE_DOUBLE = GS + b"!" + b"\x11"  # double width + double height
+
 
 class ReceiptPrinter:
     def __init__(self, mac=PRINTER_MAC, port=PRINTER_PORT):
@@ -42,11 +45,16 @@ class ReceiptPrinter:
             data = data.encode("utf-8", errors="replace")
         self.sock.sendall(data)
 
-    def print_text(self, text):
+    def init(self):
         self.write(INIT)
+
+    def print_text(self, text):
         self.write(text)
         if not text.endswith("\n"):
             self.write(b"\n")
+
+    def set_size(self, double=False):
+        self.write(SIZE_DOUBLE if double else SIZE_NORMAL)
 
     def feed(self, lines=3):
         self.write(b"\n" * lines)

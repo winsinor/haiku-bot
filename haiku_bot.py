@@ -512,16 +512,16 @@ def ensure_model(name):
 
 # ----------------------------- Printing -----------------------------
 def print_receipt(date_str, year, event_text, lines):
-    receipt = [
-        "HAIKU BOT",
-        f"{date_str}, {year}",
-        event_text,
-        "",
-    ] + list(lines)
-    text = "\n".join(receipt)
+    header = f"HAIKU BOT\n{date_str}, {year}\n{event_text}\n\n"
+    haiku_text = "\n".join(lines) + "\n"
     try:
         with ReceiptPrinter() as printer:
-            printer.print_text(text)
+            printer.init()
+            printer.set_size(double=False)
+            printer.print_text(header)
+            printer.set_size(double=True)
+            printer.print_text(haiku_text)
+            printer.set_size(double=False)
             printer.feed()
             printer.cut()
     except OSError as e:
