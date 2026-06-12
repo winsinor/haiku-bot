@@ -722,11 +722,37 @@ def main():
         print()
 
     t0 = time.time()
-    lines, counts, tokens, path = generate(args.model, event_text, summary, args.strategy)
+    total_tokens = 0
+    best = None
+    max_attempts = 3
+    for attempt in range(1, max_attempts + 1):
+        if attempt > 1:
+            status(f"Retrying from scratch (attempt {attempt}/{max_attempts})...")
+        lines, counts, tokens, path = generate(args.model, event_text, summary, args.strategy)
+        total_tokens += tokens
+        if path != "failed":
+            break
+        score = sum(abs(c - TARGET[i]) for i, c in enumerate(counts)) if len(counts) == 3 else 99
+        if best is None or score < best[0]:
+            best = (score, lines, counts)
     elapsed = time.time() - t0
+    tokens = total_tokens
 
     date_str = today.strftime("%B %-d")
     cs = " / ".join(str(c) for c in counts) if counts else "? / ? / ?"
+
+    if path == "failed":
+        best_lines, best_counts = best[1], best[2]
+        best_cs = " / ".join(str(c) for c in best_counts) if best_counts else "? / ? / ?"
+        print()
+        print(f"  ran for {elapsed / 60:.1f} minutes, could not create haiku. "
+              f"Best attempt was {best_cs}")
+        if best_lines:
+            print()
+            for line in best_lines:
+                print(f"    {line}")
+        print()
+        sys.exit(1)
 
     print()
     print(f"  {date_str}, {year} — {event_text}")
@@ -739,9 +765,6 @@ def main():
     print()
     print(f"  {cs}  ·  {tokens} tokens  ·  {elapsed:.1f}s")
     print()
-
-    if path == "failed":
-        sys.exit(1)
 
     if not args.no_print:
         status("Printing receipt...")
