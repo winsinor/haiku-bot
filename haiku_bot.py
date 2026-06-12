@@ -20,7 +20,7 @@ import time
 import requests
 import syllables
 
-from printer import ReceiptPrinter, fit_haiku, wrap_text
+from printer import ReceiptPrinter, fit_haiku, wrap_text, CHARS_PER_LINE
 
 try:
     import pronouncing
@@ -641,7 +641,10 @@ def self_update():
 
 # ----------------------------- Printing -----------------------------
 def print_receipt(date_str, year, event_text, lines):
-    header_lines = ["HAIKU BOT", f"{date_str}, {year}"]
+    date_line = f"{date_str}, {year}"
+    pad = max(1, CHARS_PER_LINE - len(date_line) - len("HaikuBot"))
+    top_line = f"{date_line}{' ' * pad}HaikuBot"
+    header_lines = [top_line, ""]
     header_lines += wrap_text(event_text)
     header = "\n".join(header_lines) + "\n\n"
 
