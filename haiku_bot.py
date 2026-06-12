@@ -222,40 +222,76 @@ def fetch_article_summary(event, no_cache=False):
     return s
 
 
+def grade_event(text):
+    t = text.lower()
+    s = 0
+    if any(k in t for k in ["battle", "war", "invasion", "siege", "army", "military"]):
+        s -= 15
+    if any(k in t for k in ["die", "death", "died", "killed", "kills", "assassinated", "executed", "massacre"]):
+        s -= 15
+    if any(k in t for k in ["pope", "saint", "church", "cathedral", "vatican", "crusade"]):
+        s -= 15
+    if any(k in t for k in ["elected", "parliament", "senate", "congress", "legislation"]):
+        s -= 7
+    if any(k in t for k in ["space", "launch", "comet", "eclipse", "astronaut", "orbit", "planet"]):
+        s += 5
+    if any(k in t for k in ["discovered", "expedition", "explored", "voyage", "island", "cave"]):
+        s += 5
+    if any(k in t for k in ["storm", "earthquake", "volcano", "eruption", "hurricane", "meteor"]):
+        s += 4
+    if any(k in t for k in ["invented", "patent", "first", "demonstration", "prototype"]):
+        s += 4
+    if any(k in t for k in ["film", "album", "music", "art", "book", "premiere", "published"]):
+        s += 5
+    if any(k in t for k in ["video game", "arcade", "nintendo", "atari", "pac-man", "tetris"]):
+        s += 7
+    if any(k in t for k in ["animal", "dinosaur", "fossil", "creature"]):
+        s += 8
+    if any(k in t for k in ["record", "unusual", "strange", "remarkable", "bizarre"]):
+        s += 8
+    return s
+
+
 def pick_event(events):
-    def score(text):
-        t = text.lower()
-        s = 0
-        if any(k in t for k in ["battle", "war", "invasion", "siege", "army", "military"]):
-            s -= 15
-        if any(k in t for k in ["die", "death", "died", "killed", "kills", "assassinated", "executed", "massacre"]):
-            s -= 15
-        if any(k in t for k in ["pope", "saint", "church", "cathedral", "vatican", "crusade"]):
-            s -= 15
-        if any(k in t for k in ["elected", "parliament", "senate", "congress", "legislation"]):
-            s -= 7
-        if any(k in t for k in ["space", "launch", "comet", "eclipse", "astronaut", "orbit", "planet"]):
-            s += 5
-        if any(k in t for k in ["discovered", "expedition", "explored", "voyage", "island", "cave"]):
-            s += 5
-        if any(k in t for k in ["storm", "earthquake", "volcano", "eruption", "hurricane", "meteor"]):
-            s += 4
-        if any(k in t for k in ["invented", "patent", "first", "demonstration", "prototype"]):
-            s += 4
-        if any(k in t for k in ["film", "album", "music", "art", "book", "premiere", "published"]):
-            s += 5
-        if any(k in t for k in ["video game", "arcade", "nintendo", "atari", "pac-man", "tetris"]):
-            s += 7
-        if any(k in t for k in ["animal", "dinosaur", "fossil", "creature"]):
-            s += 8
-        if any(k in t for k in ["record", "unusual", "strange", "remarkable", "bizarre"]):
-            s += 8
-        return s
     if not events:
         return None
-    scored = sorted(events, key=lambda e: score(e.get("text", "")), reverse=True)
+    scored = sorted(events, key=lambda e: grade_event(e.get("text", "")), reverse=True)
     candidates = [e for e in scored if len(e.get("text", "")) < 200]
     return (candidates or scored)[0]
+
+
+EVENT_POOL_SIZE = 25
+
+def event_selection_prompt(graded):
+    lines = [f"{i}. (grade {g:+d}) {e.get('text', '')}" for i, (e, g) in enumerate(graded, 1)]
+    return f"""Below are {len(graded)} historical events from "on this day in history", each with a
+heuristic grade for how well it might inspire a poetic haiku (higher is better, but
+the grade is only a rough guide).
+
+{chr(10).join(lines)}
+
+Pick the SINGLE event that would make the most vivid, evocative, and poetic haiku.
+Favor imagery-rich, sensory, surprising, or beautiful events. Avoid grim topics like
+war, death, or politics unless the imagery is exceptionally striking.
+
+Output ONLY the number of your chosen event, nothing else."""
+
+
+def pick_event_llm(model, events, pool_size=EVENT_POOL_SIZE):
+    if not events:
+        return None, 0
+    candidates = events[:pool_size]
+    graded = [(e, grade_event(e.get("text", ""))) for e in candidates]
+    try:
+        raw, tokens = call_ollama(model, event_selection_prompt(graded), temperature=0.2, num_predict=10)
+        m = re.search(r"\d+", raw)
+        if m:
+            idx = int(m.group()) - 1
+            if 0 <= idx < len(candidates):
+                return candidates[idx], tokens
+    except Exception:
+        pass
+    return pick_event(candidates), 0
 
 
 # ----------------------------- Ollama -----------------------------
@@ -601,7 +637,8 @@ def main():
         print(f"Failed to fetch Wikipedia events: {e}")
         sys.exit(1)
 
-    event = pick_event(events)
+    status("Grading articles and selecting the best one...")
+    event, select_tokens = pick_event_llm(args.model, events)
     if not event:
         print("No suitable event found for today.")
         sys.exit(1)
@@ -617,6 +654,7 @@ def main():
 
     t0 = time.time()
     lines, counts, tokens, path = generate(args.model, event_text, summary, args.strategy)
+    tokens += select_tokens
     elapsed = time.time() - t0
 
     date_str = today.strftime("%B %-d")
