@@ -289,18 +289,32 @@ def pick_event(events, current_year):
 
 
 # ----------------------------- Ollama -----------------------------
-def call_ollama(model, prompt, temperature=0.7, num_predict=80):
+def call_ollama(model, prompt, temperature=0.7, num_predict=80, label=None):
     payload = {
         "model": model,
         "prompt": prompt,
-        "stream": False,
+        "stream": True,
         "options": {"temperature": temperature, "num_predict": num_predict, "num_thread": 4},
     }
-    r = requests.post(OLLAMA_URL, json=payload, timeout=300)
-    r.raise_for_status()
-    data = r.json()
-    tokens = data.get("eval_count", 0) + data.get("prompt_eval_count", 0)
-    return data["response"].strip(), tokens
+    if VERBOSE and label:
+        status(f"{label} (streaming model output):")
+    chunks = []
+    tokens = 0
+    with requests.post(OLLAMA_URL, json=payload, timeout=300, stream=True) as r:
+        r.raise_for_status()
+        for line in r.iter_lines():
+            if not line:
+                continue
+            data = json.loads(line)
+            piece = data.get("response", "")
+            chunks.append(piece)
+            if VERBOSE:
+                print(piece, end="", flush=True)
+            if data.get("done"):
+                tokens = data.get("eval_count", 0) + data.get("prompt_eval_count", 0)
+    if VERBOSE:
+        print(flush=True)
+    return "".join(chunks).strip(), tokens
 
 
 # ----------------------------- Parsing -----------------------------
@@ -417,7 +431,8 @@ def try_pool(model, event_text, summary):
     pools, used, tokens = [], set(), 0
     for pos in range(3):
         status(f"  Generating candidates for {POSITION_LABEL[pos]}...")
-        raw, tok = call_ollama(model, pool_prompt(pos, event_text, summary, used), temperature=0.7, num_predict=120)
+        raw, tok = call_ollama(model, pool_prompt(pos, event_text, summary, used), temperature=0.7, num_predict=120,
+                                label=f"  Candidates for {POSITION_LABEL[pos]}")
         tokens += tok
         target = TARGET[pos]
         all_cands = parse_pool(raw)
@@ -451,7 +466,8 @@ def try_repair(model, lines, counts):
                 return lines, counts, False, tokens
             temp = REPAIR_TEMPS[rep % len(REPAIR_TEMPS)]
             ctx = "\n".join(l for j, l in enumerate(lines) if j != i)
-            new, tok = call_ollama(model, repair_prompt(lines[i], counts[i], TARGET[i], ctx), temperature=temp, num_predict=60)
+            new, tok = call_ollama(model, repair_prompt(lines[i], counts[i], TARGET[i], ctx), temperature=temp, num_predict=60,
+                                    label=f"  Repair attempt {rep} for {POSITION_LABEL[i]}")
             tokens += tok
             new = clean_line(new.splitlines()[0] if new.splitlines() else new)
             nc = line_strict(new)
@@ -489,7 +505,10 @@ def explain_failure(lines, counts):
 
 def generate(model, event_text, summary, strategy="repair"):
     total_tokens = 0
-    status("Generating haiku...")
+    status(f"Generating haiku with {model} (strategy={strategy})...")
+    status(f"  Event: {event_text}")
+    if summary:
+        status(f"  Summary: {summary}")
 
     if strategy in ("pool", "hybrid"):
         assembled, tok = try_pool(model, event_text, summary)
@@ -504,7 +523,8 @@ def generate(model, event_text, summary, strategy="repair"):
             return [], [], total_tokens, "failed"
 
     # repair / hybrid fallback: generate then fix
-    raw, tok = call_ollama(model, gen_prompt(event_text, summary), temperature=0.7, num_predict=100)
+    raw, tok = call_ollama(model, gen_prompt(event_text, summary), temperature=0.7, num_predict=100,
+                            label="  Direct generation")
     total_tokens += tok
     ok, lines, counts = verify_haiku(extract_haiku(raw))
     if ok:
