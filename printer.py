@@ -19,7 +19,10 @@ INIT = ESC + b"@"        # reset printer state
 CUT = GS + b"V" + b"\x00"  # partial/full cut, ignored if unsupported
 
 SIZE_NORMAL = GS + b"!" + b"\x00"  # normal width/height
-SIZE_DOUBLE = GS + b"!" + b"\x11"  # double width + double height
+
+# Characters per line at normal size (Font A, 58mm paper, 384-dot head).
+CHARS_PER_LINE = 32
+MAX_SIZE_MULT = 8  # GS ! supports width/height multipliers 1-8
 
 
 class ReceiptPrinter:
@@ -53,8 +56,17 @@ class ReceiptPrinter:
         if not text.endswith("\n"):
             self.write(b"\n")
 
-    def set_size(self, double=False):
-        self.write(SIZE_DOUBLE if double else SIZE_NORMAL)
+    def set_size(self, mult=1):
+        mult = max(1, min(MAX_SIZE_MULT, mult))
+        n = ((mult - 1) << 4) | (mult - 1)  # same width/height multiplier
+        self.write(GS + b"!" + bytes([n]))
+
+    def max_size_for_lines(self, lines):
+        """Largest size multiplier such that the longest line won't wrap."""
+        max_len = max((len(line) for line in lines), default=0)
+        if max_len == 0:
+            return MAX_SIZE_MULT
+        return max(1, min(MAX_SIZE_MULT, CHARS_PER_LINE // max_len))
 
     def feed(self, lines=3):
         self.write(b"\n" * lines)
