@@ -397,23 +397,28 @@ Use vivid imagery and simple common words. Avoid long proper nouns.
 {avoid}Output ONLY the {POOL_SIZE} lines, one per line, no numbering, no extra text."""
 
 
-def repair_prompt(line, current, target, context_lines):
+def repair_prompt(line, current, target, context_lines, event_text, summary=None):
     direction = "shorter" if current > target else "longer"
     diff = abs(current - target)
     sw = "syllable" if diff == 1 else "syllables"
     if direction == "shorter":
-        ex = f'Example: "The old si-lent pond" (5) -> "Old si-lent pond" (4). Drop small words.'
+        ex = f'Example edit: "The old si-lent pond" (5) -> "Old si-lent pond" (4). Drop small words.'
     else:
-        ex = f'Example: "Old si-lent pond" (4) -> "The old si-lent pond" (5). Add a small word.'
-    return f"""You are an editor fixing ONE line of a haiku.
+        ex = f'Example edit: "Old si-lent pond" (4) -> "The old si-lent pond" (5). Add a small word.'
+    ctx = event_text if not summary else f"{event_text}\n\nMore context: {summary}"
+    hint = syllable_hint(f"{line} {event_text}")
+    return f"""You are an editor fixing ONE line of a haiku about this event:
+{ctx}
+
 Original line ({current} syllables, need {target}): "{line}"
 
-The other lines are:
+The other lines of the haiku are:
 {context_lines}
 
-Rewrite so it has EXACTLY {target} syllables ({diff} {sw} {direction}).
-Count by sounding out: "en-gine"=2, "bright"=1, "morn-ing"=2, "launch"=1.
-{ex}
+Rewrite the line so it has EXACTLY {target} syllables ({diff} {sw} {direction}),
+while staying about the same event as the other lines.
+{hint}
+{ex} (this example is about the kind of edit to make, not your topic).
 Use simple common words. Do not reuse any word already in the other lines.
 Output ONLY the single rewritten line. No explanations, no quotes, no markdown."""
 
@@ -457,7 +462,7 @@ def try_pool(model, event_text, summary):
     return assembled, tokens
 
 
-def try_repair(model, lines, counts):
+def try_repair(model, lines, counts, event_text, summary=None):
     tokens = 0
     for i in range(3):
         if line_hits(lines[i], TARGET[i]):
@@ -469,7 +474,7 @@ def try_repair(model, lines, counts):
                 return lines, counts, False, tokens
             temp = REPAIR_TEMPS[rep % len(REPAIR_TEMPS)]
             ctx = "\n".join(l for j, l in enumerate(lines) if j != i)
-            new, tok = call_ollama(model, repair_prompt(lines[i], counts[i], TARGET[i], ctx), temperature=temp, num_predict=60,
+            new, tok = call_ollama(model, repair_prompt(lines[i], counts[i], TARGET[i], ctx, event_text, summary), temperature=temp, num_predict=60,
                                     label=f"  Repair attempt {rep} for {POSITION_LABEL[i]}")
             tokens += tok
             new = clean_line(new.splitlines()[0] if new.splitlines() else new)
@@ -548,7 +553,7 @@ def generate(model, event_text, summary, strategy="repair"):
 
     if len(lines) == 3:
         status("  Repairing...")
-        lines, counts, ok, tok = try_repair(model, lines, counts)
+        lines, counts, ok, tok = try_repair(model, lines, counts, event_text, summary)
         total_tokens += tok
         if ok:
             return lines, counts, total_tokens, "repair"
