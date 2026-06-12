@@ -530,6 +530,19 @@ def generate(model, event_text, summary, strategy="repair"):
     if ok:
         return lines, counts, total_tokens, "direct"
     status(f"  Direct generation failed verification: {explain_failure(lines, counts)}")
+
+    if len(lines) > 3 and len(lines) % 3 == 0:
+        status(f"  Got {len(lines)} lines, checking each group of 3 for a valid haiku...")
+        for g in range(0, len(lines), 3):
+            group = lines[g:g + 3]
+            gok, glines, gcounts = verify_haiku("\n".join(group))
+            if gok:
+                status(f"  Group {g // 3 + 1} is a valid haiku")
+                return glines, gcounts, total_tokens, "direct"
+            status(f"  Group {g // 3 + 1} failed verification: {explain_failure(glines, gcounts)}")
+        lines, counts = lines[:3], [line_strict(l) for l in lines[:3]]
+        status("  No group verified; repairing the first group")
+
     if len(lines) == 3:
         status("  Repairing...")
         lines, counts, ok, tok = try_repair(model, lines, counts)
