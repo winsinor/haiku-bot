@@ -19,7 +19,7 @@ import time
 import requests
 import syllables
 
-from printer import ReceiptPrinter, fit_haiku, wrap_text
+from printer import ReceiptPrinter, SLOW_PRINT_SETTINGS, fit_haiku, wrap_text
 
 try:
     import pronouncing
@@ -522,6 +522,7 @@ def print_receipt(date_str, year, event_text, lines):
     try:
         with ReceiptPrinter() as printer:
             printer.init()
+            printer.set_print_speed(*SLOW_PRINT_SETTINGS)
             printer.justify("left")
             printer.set_size(1)
             printer.print_text(header)
