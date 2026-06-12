@@ -19,6 +19,8 @@ import time
 import requests
 import syllables
 
+from printer import ReceiptPrinter
+
 try:
     import pronouncing
     HAS_CMU = True
@@ -508,6 +510,24 @@ def ensure_model(name):
         sys.exit(1)
 
 
+# ----------------------------- Printing -----------------------------
+def print_receipt(date_str, year, event_text, lines):
+    receipt = [
+        "HAIKU BOT",
+        f"{date_str}, {year}",
+        event_text,
+        "",
+    ] + list(lines)
+    text = "\n".join(receipt)
+    try:
+        with ReceiptPrinter() as printer:
+            printer.print_text(text)
+            printer.feed()
+            printer.cut()
+    except OSError as e:
+        status(f"Failed to print receipt: {e}")
+
+
 # ----------------------------- Main -----------------------------
 def main():
     global VERBOSE
@@ -519,6 +539,7 @@ def main():
     p.add_argument("--quiet", action="store_true", help="Skip status messages, output haiku only")
     p.add_argument("--strategy", choices=["repair", "pool", "hybrid"], default="repair",
                    help="Generation strategy (default: repair)")
+    p.add_argument("--no-print", action="store_true", help="Skip printing to the receipt printer")
     args = p.parse_args()
 
     VERBOSE = not args.quiet
@@ -582,6 +603,10 @@ def main():
 
     if path == "failed":
         sys.exit(1)
+
+    if not args.no_print:
+        status("Printing receipt...")
+        print_receipt(date_str, year, event_text, lines)
 
 
 if __name__ == "__main__":

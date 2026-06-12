@@ -63,6 +63,8 @@ ollama list
 | `--model NAME` | Ollama model to use (default: `gemma2:2b`) |
 | `--date MM-DD` | Draw events from a specific date (default: today) |
 | `--no-cache` | Disable the Wikipedia response cache |
+| `--strategy` | Generation strategy: `repair` (default), `pool`, or `hybrid` |
+| `--no-print` | Skip printing the haiku to the receipt printer |
 
 ## Receipt printer
 
@@ -86,6 +88,9 @@ python3 test_print.py
 
 This sends a short page of randomly generated words to the printer. The
 printer's MAC address and RFCOMM channel are configured in `printer.py`.
+
+`haiku_bot.py` prints each generated haiku to the receipt printer
+automatically. Pass `--no-print` to skip printing.
 
 ## Benchmark
 
