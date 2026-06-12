@@ -419,11 +419,24 @@ def try_pool(model, event_text, summary):
         status(f"  Generating candidates for {POSITION_LABEL[pos]}...")
         raw, tok = call_ollama(model, pool_prompt(pos, event_text, summary, used), temperature=0.7, num_predict=120)
         tokens += tok
-        cands = [c for c in parse_pool(raw) if line_hits(c, TARGET[pos])]
+        target = TARGET[pos]
+        all_cands = parse_pool(raw)
+        cands = []
+        for c in all_cands:
+            if line_hits(c, target):
+                cands.append(c)
+                status(f"    OK   ({line_strict(c)}/{target} syl): {c}")
+            else:
+                status(f"    REJECT ({line_strict(c)}/{target} syl): {c}")
+        if not cands:
+            status(f"    No valid candidates for {POSITION_LABEL[pos]}")
         if cands:
             used |= content_words(cands[0])
         pools.append(cands)
-    return assemble(pools), tokens
+    assembled = assemble(pools)
+    if assembled is None:
+        status("  Could not assemble a non-repeating combo from candidate pools.")
+    return assembled, tokens
 
 
 def try_repair(model, lines, counts):
@@ -431,8 +444,10 @@ def try_repair(model, lines, counts):
     for i in range(3):
         if line_hits(lines[i], TARGET[i]):
             continue
+        status(f"  Repairing {POSITION_LABEL[i]}: \"{lines[i]}\" ({counts[i]}/{TARGET[i]} syl)")
         for rep in range(1, MAX_LINE_FAILURES[i] + 1):
             if abs(counts[i] - TARGET[i]) > MAX_REPAIR_DISTANCE:
+                status(f"    Giving up: off by {abs(counts[i] - TARGET[i])} syllables (max {MAX_REPAIR_DISTANCE})")
                 return lines, counts, False, tokens
             temp = REPAIR_TEMPS[rep % len(REPAIR_TEMPS)]
             ctx = "\n".join(l for j, l in enumerate(lines) if j != i)
@@ -441,15 +456,35 @@ def try_repair(model, lines, counts):
             new = clean_line(new.splitlines()[0] if new.splitlines() else new)
             nc = line_strict(new)
             cand = [l if j != i else new for j, l in enumerate(lines)]
-            if line_hits(new, TARGET[i]) and not has_word_reuse(cand):
+            reuse = has_word_reuse(cand)
+            if line_hits(new, TARGET[i]) and not reuse:
+                status(f"    Attempt {rep}: \"{new}\" ({nc}/{TARGET[i]} syl) -> ACCEPTED")
                 lines[i], counts[i] = new, nc
                 break
-            if abs(nc - TARGET[i]) < abs(counts[i] - TARGET[i]) and not has_word_reuse(cand):
+            if abs(nc - TARGET[i]) < abs(counts[i] - TARGET[i]) and not reuse:
+                status(f"    Attempt {rep}: \"{new}\" ({nc}/{TARGET[i]} syl) -> closer, kept as new baseline")
                 lines[i], counts[i] = new, nc
+            else:
+                reason = "word reuse" if reuse else "no improvement"
+                status(f"    Attempt {rep}: \"{new}\" ({nc}/{TARGET[i]} syl) -> rejected ({reason})")
         else:
+            status(f"    Exhausted {MAX_LINE_FAILURES[i]} attempts for {POSITION_LABEL[i]}")
             return lines, counts, False, tokens
     ok = all(line_hits(lines[i], TARGET[i]) for i in range(3)) and not has_word_reuse(lines)
     return lines, counts, ok, tokens
+
+
+def explain_failure(lines, counts):
+    """Describe why a candidate haiku failed verify_haiku, for verbose logging."""
+    if len(lines) != 3:
+        return f"expected 3 lines, got {len(lines)}"
+    reasons = []
+    for i in range(3):
+        if not line_hits(lines[i], TARGET[i]):
+            reasons.append(f"{POSITION_LABEL[i]} has {counts[i]} syllables (want {TARGET[i]}): \"{lines[i]}\"")
+    if has_word_reuse(lines):
+        reasons.append("a content word is repeated across lines")
+    return "; ".join(reasons) if reasons else "unknown"
 
 
 def generate(model, event_text, summary, strategy="repair"):
@@ -463,6 +498,7 @@ def generate(model, event_text, summary, strategy="repair"):
             ok, lines, counts = verify_haiku("\n".join(assembled))
             if ok:
                 return lines, counts, total_tokens, "pool"
+            status(f"  Assembled candidate failed verification: {explain_failure(lines, counts)}")
         if strategy == "pool":
             status("Could not produce a valid haiku.")
             return [], [], total_tokens, "failed"
@@ -473,12 +509,14 @@ def generate(model, event_text, summary, strategy="repair"):
     ok, lines, counts = verify_haiku(extract_haiku(raw))
     if ok:
         return lines, counts, total_tokens, "direct"
+    status(f"  Direct generation failed verification: {explain_failure(lines, counts)}")
     if len(lines) == 3:
         status("  Repairing...")
         lines, counts, ok, tok = try_repair(model, lines, counts)
         total_tokens += tok
         if ok:
             return lines, counts, total_tokens, "repair"
+        status(f"  Repair failed: {explain_failure(lines, counts)}")
 
     status("Could not produce a valid haiku.")
     return lines, counts, total_tokens, "failed"
@@ -573,6 +611,9 @@ def print_receipt(date_str, year, event_text, lines):
         with ReceiptPrinter() as printer:
             printer.init()
             printer.set_print_speed(*SLOW_PRINT_SETTINGS)
+            # Warm up the print head with a blank line first; the first
+            # line printed right after connecting tends to come out faint.
+            printer.print_text("\n")
             printer.justify("left")
             printer.set_size(1)
             printer.print_text(header)

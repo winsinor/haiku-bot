@@ -17,7 +17,6 @@ ESC = b"\x1b"
 GS = b"\x1d"
 
 INIT = ESC + b"@"        # reset printer state
-CUT = GS + b"V" + b"\x00"  # partial/full cut, ignored if unsupported
 PRINT_SETTINGS = ESC + b"7"  # ESC 7 n1 n2 n3: max dots, heating time, heating interval
 
 # Slower, darker print: longer heating time per dot and more cooling time
@@ -108,10 +107,11 @@ class ReceiptPrinter:
         self.write(b"\n" * lines)
 
     def cut(self):
-        try:
-            self.write(CUT)
-        except OSError:
-            pass
+        # The PT-210 has no auto-cutter (paper tears off by hand). Sending
+        # GS V to it leaves stray bytes that print as garbage characters at
+        # the top of the next job, so this is a no-op kept for printers
+        # that do support cutting.
+        pass
 
     def __enter__(self):
         self.connect()
