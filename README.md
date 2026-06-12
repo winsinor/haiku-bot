@@ -66,6 +66,19 @@ ollama list
 | `--strategy` | Generation strategy: `repair` (default), `pool`, or `hybrid` |
 | `--no-print` | Skip printing the haiku to the receipt printer |
 | `--no-update` | Skip self-update via `git pull` on startup |
+| `--llm-select` | Use the LLM to pick the best of the top candidate events (extra model call) |
+
+## Event selection
+
+`pick_event()` scores each "on this day" event with keyword heuristics plus
+a recency bonus/penalty: events from 1994 onward and within the last 25
+years get a bonus, while older events are penalized on a sliding scale (up
+to -15). Every event's score breakdown is logged live.
+
+With `--llm-select`, the top-scoring candidates (up to 50) are sent to the
+LLM, which picks the best one for haiku material using the `SELECT_PROMPT`
+constant in `haiku_bot.py` — edit that prompt directly to tune selection
+criteria.
 
 On startup, `haiku_bot.py` runs `git pull --ff-only` in its own directory.
 If new commits were fetched, it restarts itself automatically with the
