@@ -222,7 +222,7 @@ def fetch_article_summary(event, no_cache=False):
     return s
 
 
-def pick_event(events, current_year, model=None, llm_select=False, shortlist=50):
+def pick_event(events, current_year):
     def score(text):
         t = text.lower()
         s = 0
@@ -283,17 +283,7 @@ def pick_event(events, current_year, model=None, llm_select=False, shortlist=50)
     candidates = candidates or [e for _, e in scored]
 
     top, top_score = candidates[0], scored[0][0]
-    status(f"Top candidate (heuristic): [{top.get('year')}] total={top_score:+.1f}  {top.get('text', '')[:70]}")
-
-    if llm_select and model:
-        shortlisted = candidates[:shortlist]
-        status(f"Asking {model} to pick the best of {len(shortlisted)} candidates...")
-        for i, e in enumerate(shortlisted):
-            status(f"  {i + 1}. [{e.get('year')}] {e.get('text', '')[:70]}")
-        picked, _ = select_event(model, shortlisted)
-        status(f"LLM picked: [{picked.get('year')}] {picked.get('text', '')[:70]}")
-        top = picked
-
+    status(f"Top candidate: [{top.get('year')}] total={top_score:+.1f}  {top.get('text', '')[:70]}")
     status(f"Selected event: {top.get('year')} — {top.get('text', '')}")
     return top
 
@@ -375,29 +365,6 @@ Output ONLY the three lines inside <haiku> tags:
 [seven-syllable line]
 [five-syllable line]
 </haiku>"""
-
-
-SELECT_PROMPT = """Below is a numbered list of "on this day in history" events.
-Pick the ONE event that would make the best subject for a vivid,
-imagery-rich haiku. Favor concrete, visual, sensory events (nature,
-discovery, exploration, unusual happenings). Avoid abstract political,
-legal, or religious events.
-
-{numbered_list}
-
-Output ONLY the number of the best event."""
-
-
-def select_event(model, candidates):
-    """candidates: list of event dicts. Returns (chosen event dict, tokens)."""
-    numbered = "\n".join(f"{i + 1}. {e.get('text', '')}" for i, e in enumerate(candidates))
-    raw, tok = call_ollama(model, SELECT_PROMPT.format(numbered_list=numbered),
-                            temperature=0.0, num_predict=5)
-    m = re.search(r"\d+", raw)
-    idx = int(m.group()) - 1 if m else 0
-    if not (0 <= idx < len(candidates)):
-        idx = 0
-    return candidates[idx], tok
 
 
 def pool_prompt(position, event_text, summary, used_words):
@@ -633,8 +600,6 @@ def main():
                    help="Generation strategy (default: repair)")
     p.add_argument("--no-print", action="store_true", help="Skip printing to the receipt printer")
     p.add_argument("--no-update", action="store_true", help="Skip self-update via git pull")
-    p.add_argument("--llm-select", action="store_true",
-                   help="Use the LLM to pick the best of the top candidate events (extra model call)")
     args = p.parse_args()
 
     VERBOSE = not args.quiet
@@ -666,8 +631,7 @@ def main():
         print(f"Failed to fetch Wikipedia events: {e}")
         sys.exit(1)
 
-    event = pick_event(events, datetime.date.today().year,
-                        model=args.model, llm_select=args.llm_select)
+    event = pick_event(events, datetime.date.today().year)
     if not event:
         print("No suitable event found for today.")
         sys.exit(1)
