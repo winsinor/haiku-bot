@@ -19,7 +19,7 @@ import time
 import requests
 import syllables
 
-from printer import ReceiptPrinter
+from printer import ReceiptPrinter, fit_haiku, wrap_text
 
 try:
     import pronouncing
@@ -512,16 +512,24 @@ def ensure_model(name):
 
 # ----------------------------- Printing -----------------------------
 def print_receipt(date_str, year, event_text, lines):
-    header = f"HAIKU BOT\n{date_str}, {year}\n{event_text}\n\n"
-    haiku_text = "\n".join(lines) + "\n"
+    header_lines = ["HAIKU BOT", f"{date_str}, {year}"]
+    header_lines += wrap_text(event_text)
+    header = "\n".join(header_lines) + "\n\n"
+
+    mult, haiku_lines = fit_haiku(lines)
+    haiku_text = "\n".join(haiku_lines) + "\n"
+
     try:
         with ReceiptPrinter() as printer:
             printer.init()
+            printer.justify("left")
             printer.set_size(1)
             printer.print_text(header)
-            printer.set_size(printer.max_size_for_lines(lines))
+            printer.justify("center")
+            printer.set_size(mult)
             printer.print_text(haiku_text)
             printer.set_size(1)
+            printer.justify("left")
             printer.feed()
             printer.cut()
     except OSError as e:

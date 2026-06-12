@@ -291,7 +291,7 @@ def score_event(text):
     s = 0
     if any(k in t for k in ["battle", "war", "invasion", "siege", "troops", "regiment", "casualties", "army", "military"]):
         s -= 15
-    if any(k in t for k in ["died", "dead", "death", "killed", "kill", "killing", "assassinated", "executed", "funeral", "massacre", "murder"]):
+    if any(k in t for k in ["died", "dead", "death", "die", "killed", "kill", "killing", "assassinated", "executed", "funeral", "massacre", "murder"]):
         s -= 12
     if any(k in t for k in ["pope", "saint", "canonized", "bishop", "church", "cathedral", "vatican", "monastery",
                             "religious", "theology", "crusade", "mosque", "temple", "synagogue", "cardinal", "clergyman"]):

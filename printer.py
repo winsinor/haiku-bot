@@ -8,6 +8,7 @@ with the host already (e.g. via `bluetoothctl`).
 """
 
 import socket
+import textwrap
 
 PRINTER_MAC = "86:67:7A:52:31:A8"
 PRINTER_PORT = 1  # standard RFCOMM channel for SPP
@@ -20,9 +21,38 @@ CUT = GS + b"V" + b"\x00"  # partial/full cut, ignored if unsupported
 
 SIZE_NORMAL = GS + b"!" + b"\x00"  # normal width/height
 
-# Characters per line at normal size (Font A, 58mm paper, 384-dot head).
-CHARS_PER_LINE = 32
+JUSTIFY_LEFT = ESC + b"a" + b"\x00"
+JUSTIFY_CENTER = ESC + b"a" + b"\x01"
+JUSTIFY_RIGHT = ESC + b"a" + b"\x02"
+
+# Characters per line at normal size on this printer. Tuned from observed
+# wrapping behavior rather than the nominal Font A spec.
+CHARS_PER_LINE = 16
 MAX_SIZE_MULT = 8  # GS ! supports width/height multipliers 1-8
+
+
+def wrap_text(text, width=CHARS_PER_LINE):
+    """Word-wrap text to width, never breaking a word across lines."""
+    out = []
+    for line in text.splitlines() or [""]:
+        wrapped = textwrap.wrap(line, width=width, break_long_words=False,
+                                 break_on_hyphens=False) or [""]
+        out.extend(wrapped)
+    return out
+
+
+def fit_haiku(lines, chars_per_line=CHARS_PER_LINE, max_mult=MAX_SIZE_MULT):
+    """Pick the largest size multiplier that keeps every haiku line on one
+    printed line, word-wrapping (without breaking words) if even the
+    smallest size can't fit a line."""
+    for mult in range(max_mult, 0, -1):
+        width = max(1, chars_per_line // mult)
+        wrapped = [wrap_text(line, width) for line in lines]
+        if all(len(w) == 1 for w in wrapped):
+            return mult, [w[0] for w in wrapped]
+    width = max(1, chars_per_line)
+    flat = [l for line in lines for l in wrap_text(line, width)]
+    return 1, flat
 
 
 class ReceiptPrinter:
@@ -61,12 +91,9 @@ class ReceiptPrinter:
         n = ((mult - 1) << 4) | (mult - 1)  # same width/height multiplier
         self.write(GS + b"!" + bytes([n]))
 
-    def max_size_for_lines(self, lines):
-        """Largest size multiplier such that the longest line won't wrap."""
-        max_len = max((len(line) for line in lines), default=0)
-        if max_len == 0:
-            return MAX_SIZE_MULT
-        return max(1, min(MAX_SIZE_MULT, CHARS_PER_LINE // max_len))
+    def justify(self, mode="left"):
+        self.write({"left": JUSTIFY_LEFT, "center": JUSTIFY_CENTER,
+                     "right": JUSTIFY_RIGHT}[mode])
 
     def feed(self, lines=3):
         self.write(b"\n" * lines)
