@@ -260,11 +260,11 @@ def pick_event(events, current_year):
         age = current_year - year
         if age < 0:
             return 0
-        penalty = min(15, age / 10.0)
+        penalty = min(7.5, age / 20.0)
         if year < 1994:
-            penalty += 5
-        penalty = min(penalty, 15)
-        bonus = 5 if age <= 25 else 0
+            penalty += 2.5
+        penalty = min(penalty, 7.5)
+        bonus = 2.5 if age <= 25 else 0
         return -penalty + bonus
 
     if not events:
