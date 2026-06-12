@@ -25,9 +25,8 @@ JUSTIFY_LEFT = ESC + b"a" + b"\x00"
 JUSTIFY_CENTER = ESC + b"a" + b"\x01"
 JUSTIFY_RIGHT = ESC + b"a" + b"\x02"
 
-# Characters per line at normal size on this printer. Tuned from observed
-# wrapping behavior rather than the nominal Font A spec.
-CHARS_PER_LINE = 16
+# Characters per line at normal size: 50mm paper, 384-dot head, Font A (12x24).
+CHARS_PER_LINE = 32
 MAX_SIZE_MULT = 8  # GS ! supports width/height multipliers 1-8
 
 
