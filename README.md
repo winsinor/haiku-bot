@@ -64,6 +64,29 @@ ollama list
 | `--date MM-DD` | Draw events from a specific date (default: today) |
 | `--no-cache` | Disable the Wikipedia response cache |
 
+## Receipt printer
+
+Haikus can be printed to a Bluetooth ESC/POS receipt printer (PT-210).
+
+Pair the printer first (one-time setup):
+
+```bash
+bluetoothctl
+> scan on
+> pair 86:67:7A:52:31:A8
+> trust 86:67:7A:52:31:A8
+> exit
+```
+
+Then run a test print to verify connectivity:
+
+```bash
+python3 test_print.py
+```
+
+This sends a short page of randomly generated words to the printer. The
+printer's MAC address and RFCOMM channel are configured in `printer.py`.
+
 ## Benchmark
 
 `tests/haiku_benchmark_v2.py` runs multi-cycle benchmarks across models and generation strategies.
