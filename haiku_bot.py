@@ -225,37 +225,72 @@ def fetch_article_summary(event, no_cache=False):
 def grade_event(text):
     t = text.lower()
     s = 0
-    if any(k in t for k in ["battle", "war", "invasion", "siege", "army", "military"]):
+    if any(k in t for k in ["battle", "war", "invasion", "siege", "army", "military",
+                             "conflict", "rebellion", "revolt", "uprising", "coup",
+                             "troops", "soldiers", "occupation", "bombing", "warfare",
+                             "regiment", "blockade"]):
+        s -= 12
+    if any(k in t for k in ["die", "death", "died", "killed", "kills", "assassinated",
+                             "executed", "massacre", "dies", "fatal", "suicide",
+                             "genocide", "casualties", "perished", "slain", "bloodshed"]):
         s -= 15
-    if any(k in t for k in ["die", "death", "died", "killed", "kills", "assassinated", "executed", "massacre"]):
-        s -= 15
-    if any(k in t for k in ["pope", "saint", "church", "cathedral", "vatican", "crusade"]):
-        s -= 15
-    if any(k in t for k in ["elected", "parliament", "senate", "congress", "legislation"]):
-        s -= 7
-    if any(k in t for k in ["space", "launch", "comet", "eclipse", "astronaut", "orbit", "planet"]):
-        s += 5
-    if any(k in t for k in ["discovered", "expedition", "explored", "voyage", "island", "cave"]):
-        s += 5
-    if any(k in t for k in ["storm", "earthquake", "volcano", "eruption", "hurricane", "meteor"]):
+    if any(k in t for k in ["pope", "saint", "church", "cathedral", "vatican", "crusade",
+                             "bishop", "monastery", "shrine", "pilgrimage", "religious",
+                             "temple", "mosque", "sermon"]):
+        s -= 10
+    if any(k in t for k in ["elected", "parliament", "senate", "congress", "legislation",
+                             "president", "minister", "treaty", "constitution",
+                             "referendum", "coronation", "monarch", "cabinet"]):
+        s -= 6
+    if any(k in t for k in ["space", "launch", "comet", "eclipse", "astronaut", "orbit",
+                             "planet", "lunar", "solar", "galaxy", "nebula", "asteroid",
+                             "cosmonaut", "mars", "venus", "jupiter", "saturn"]):
+        s += 6
+    if any(k in t for k in ["discovered", "expedition", "explored", "voyage", "island",
+                             "cave", "trek", "summit", "explorer", "frontier",
+                             "wilderness", "navigator", "uncharted", "glacier"]):
+        s += 6
+    if any(k in t for k in ["storm", "earthquake", "volcano", "eruption", "hurricane",
+                             "meteor", "tsunami", "wildfire", "drought", "avalanche",
+                             "tornado", "flood"]):
         s += 4
-    if any(k in t for k in ["invented", "patent", "first", "demonstration", "prototype"]):
-        s += 4
-    if any(k in t for k in ["film", "album", "music", "art", "book", "premiere", "published"]):
+    if any(k in t for k in ["invented", "patent", "first", "demonstration", "prototype",
+                             "breakthrough", "innovation", "pioneering", "unveiled",
+                             "debut"]):
         s += 5
-    if any(k in t for k in ["video game", "arcade", "nintendo", "atari", "pac-man", "tetris"]):
+    if any(k in t for k in ["film", "album", "music", "art", "book", "premiere",
+                             "published", "painting", "sculpture", "poetry", "symphony",
+                             "orchestra", "theatre", "novel", "exhibition", "ballet"]):
+        s += 5
+    if any(k in t for k in ["video game", "arcade", "nintendo", "atari", "pac-man",
+                             "tetris", "sega", "playstation", "xbox", "joystick",
+                             "console"]):
+        s += 6
+    if any(k in t for k in ["animal", "dinosaur", "fossil", "creature", "species",
+                             "wildlife", "habitat", "migration", "endangered", "extinct",
+                             "mammal", "reptile"]):
+        s += 8
+    if any(k in t for k in ["record", "unusual", "strange", "remarkable", "bizarre",
+                             "marvel", "wonder", "spectacle", "phenomenon",
+                             "astonishing", "extraordinary"]):
         s += 7
-    if any(k in t for k in ["animal", "dinosaur", "fossil", "creature"]):
-        s += 8
-    if any(k in t for k in ["record", "unusual", "strange", "remarkable", "bizarre"]):
-        s += 8
     if any(k in t for k in ["science", "scientist", "physics", "chemistry", "biology",
                              "mathematics", "math", "theorem", "equation", "experiment",
                              "research", "laboratory", "technology", "computer", "engineer",
                              "engineering", "satellite", "telescope", "spacecraft", "rocket",
                              "vaccine", "medicine", "element", "particle", "genome", "robot",
-                             "algorithm", "microscope", "nuclear", "atomic"]):
-        s += 10
+                             "algorithm", "microscope", "nuclear", "atomic", "physicist",
+                             "biologist", "chemist", "mathematician", "astronomer",
+                             "quantum", "dna", "evolution", "ecosystem", "circuit",
+                             "transistor", "semiconductor", "microchip", "software",
+                             "hardware", "artificial intelligence"]):
+        s += 12
+    if any(k in t for k in ["rainbow", "aurora", "sunrise", "sunset", "blossom",
+                             "garden", "meadow", "forest", "river", "ocean", "coral",
+                             "snow", "frost"]):
+        s += 3
+    if any(k in t for k in ["recipe", "cuisine", "harvest", "vineyard", "feast"]):
+        s += 2
     return s
 
 
