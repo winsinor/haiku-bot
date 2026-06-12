@@ -249,6 +249,13 @@ def grade_event(text):
         s += 8
     if any(k in t for k in ["record", "unusual", "strange", "remarkable", "bizarre"]):
         s += 8
+    if any(k in t for k in ["science", "scientist", "physics", "chemistry", "biology",
+                             "mathematics", "math", "theorem", "equation", "experiment",
+                             "research", "laboratory", "technology", "computer", "engineer",
+                             "engineering", "satellite", "telescope", "spacecraft", "rocket",
+                             "vaccine", "medicine", "element", "particle", "genome", "robot",
+                             "algorithm", "microscope", "nuclear", "atomic"]):
+        s += 10
     return s
 
 
@@ -271,8 +278,11 @@ the grade is only a rough guide).
 {chr(10).join(lines)}
 
 Pick the SINGLE event that would make the most vivid, evocative, and poetic haiku.
-Favor imagery-rich, sensory, surprising, or beautiful events. Avoid grim topics like
-war, death, or politics unless the imagery is exceptionally striking.
+Favor imagery-rich, sensory, surprising, or beautiful events. Strongly prefer events
+about science, technology, mathematics, engineering, space, medicine, or notable
+discoveries and inventions — these should win over other topics with a similar grade.
+Avoid grim topics like war, death, or politics unless the imagery is exceptionally
+striking.
 
 Output ONLY the number of your chosen event, nothing else."""
 
