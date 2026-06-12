@@ -17,11 +17,6 @@ ESC = b"\x1b"
 GS = b"\x1d"
 
 INIT = ESC + b"@"        # reset printer state
-PRINT_SETTINGS = ESC + b"7"  # ESC 7 n1 n2 n3: max dots, heating time, heating interval
-
-# Slower, darker print: longer heating time per dot and more cooling time
-# between dot lines than the printer's defaults (n1=7, n2=80, n3=2).
-SLOW_PRINT_SETTINGS = (7, 120, 40)
 
 SIZE_NORMAL = GS + b"!" + b"\x00"  # normal width/height
 
@@ -83,11 +78,6 @@ class ReceiptPrinter:
 
     def init(self):
         self.write(INIT)
-
-    def set_print_speed(self, n1=7, n2=80, n3=2):
-        """ESC 7: max heating dots, heating time, heating interval.
-        Larger n2/n3 = slower, darker print."""
-        self.write(PRINT_SETTINGS + bytes([n1, n2, n3]))
 
     def print_text(self, text):
         self.write(text)

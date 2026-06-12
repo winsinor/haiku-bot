@@ -7,7 +7,7 @@ Bluetooth receipt printer, to verify connectivity and printing.
 import random
 import sys
 
-from printer import PRINTER_MAC, SLOW_PRINT_SETTINGS, ReceiptPrinter
+from printer import PRINTER_MAC, ReceiptPrinter
 
 WORDS = [
     "cedar", "ember", "harbor", "lantern", "meadow", "ripple", "summit",
@@ -40,7 +40,6 @@ def main():
         with ReceiptPrinter() as printer:
             print("Connected. Sending print job...")
             printer.init()
-            printer.set_print_speed(*SLOW_PRINT_SETTINGS)
             printer.print_text(text)
             printer.feed()
             printer.cut()

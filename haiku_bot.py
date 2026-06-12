@@ -20,7 +20,7 @@ import time
 import requests
 import syllables
 
-from printer import ReceiptPrinter, SLOW_PRINT_SETTINGS, fit_haiku, wrap_text
+from printer import ReceiptPrinter, fit_haiku, wrap_text
 
 try:
     import pronouncing
@@ -646,7 +646,6 @@ def print_receipt(date_str, year, event_text, lines):
     try:
         with ReceiptPrinter() as printer:
             printer.init()
-            printer.set_print_speed(*SLOW_PRINT_SETTINGS)
             # Warm up the print head with a blank line first; the first
             # line printed right after connecting tends to come out faint.
             printer.print_text("\n")
