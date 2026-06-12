@@ -65,6 +65,11 @@ ollama list
 | `--no-cache` | Disable the Wikipedia response cache |
 | `--strategy` | Generation strategy: `repair` (default), `pool`, or `hybrid` |
 | `--no-print` | Skip printing the haiku to the receipt printer |
+| `--no-update` | Skip self-update via `git pull` on startup |
+
+On startup, `haiku_bot.py` runs `git pull --ff-only` in its own directory.
+If new commits were fetched, it restarts itself automatically with the
+updated code.
 
 ## Receipt printer
 

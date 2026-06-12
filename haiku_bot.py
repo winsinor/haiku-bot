@@ -13,6 +13,7 @@ import itertools
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 
@@ -510,6 +511,25 @@ def ensure_model(name):
         sys.exit(1)
 
 
+# ----------------------------- Self-update -----------------------------
+def self_update():
+    repo_dir = os.path.dirname(os.path.abspath(__file__))
+    try:
+        result = subprocess.run(
+            ["git", "-C", repo_dir, "pull", "--ff-only"],
+            capture_output=True, text=True, timeout=30,
+        )
+    except Exception as e:
+        status(f"Self-update skipped: {e}")
+        return
+    if result.returncode != 0:
+        status(f"Self-update failed: {result.stderr.strip()}")
+        return
+    if "Already up to date" not in result.stdout:
+        status("Updated to the latest version, restarting...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+
+
 # ----------------------------- Printing -----------------------------
 def print_receipt(date_str, year, event_text, lines):
     header_lines = ["HAIKU BOT", f"{date_str}, {year}"]
@@ -549,9 +569,13 @@ def main():
     p.add_argument("--strategy", choices=["repair", "pool", "hybrid"], default="repair",
                    help="Generation strategy (default: repair)")
     p.add_argument("--no-print", action="store_true", help="Skip printing to the receipt printer")
+    p.add_argument("--no-update", action="store_true", help="Skip self-update via git pull")
     args = p.parse_args()
 
     VERBOSE = not args.quiet
+
+    if not args.no_update:
+        self_update()
 
     if VERBOSE:
         print(f"\n  {'=' * 30}")
