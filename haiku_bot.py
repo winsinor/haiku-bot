@@ -325,6 +325,9 @@ def clean_line(line):
     line = re.sub(r'\[[^\]]*\]', '', line).strip()
     line = re.sub(r'^\s*[\d#\-\*\.\)]+\s*', '', line)
     line = line.strip('\'"""—–-')
+    # Drop stray non-ASCII characters (e.g. CJK) the model sometimes mixes in
+    line = re.sub(r'[^\x00-\x7F]+', '', line)
+    line = re.sub(r'\s{2,}', ' ', line)
     return line.strip()
 
 
