@@ -228,8 +228,8 @@ def pick_event(events):
         s = 0
         if any(k in t for k in ["battle", "war", "invasion", "siege", "army", "military"]):
             s -= 15
-        if any(k in t for k in ["die", "death", "died", "killed", "assassinated", "executed", "massacre"]):
-            s -= 12
+        if any(k in t for k in ["die", "death", "died", "killed", "kills", "assassinated", "executed", "massacre"]):
+            s -= 15
         if any(k in t for k in ["pope", "saint", "church", "cathedral", "vatican", "crusade"]):
             s -= 15
         if any(k in t for k in ["elected", "parliament", "senate", "congress", "legislation"]):
