@@ -232,7 +232,7 @@ def pick_event(events, current_year):
             s -= 15
         if any(k in t for k in ["pope", "saint", "church", "cathedral", "vatican", "crusade"]):
             s -= 15
-        if any(k in t for k in ["elected", "parliament", "senate", "congress", "legislation"]):
+        if any(k in t for k in ["president", "elected", "parliament", "senate", "congress", "legislation"]):
             s -= 7
         if any(k in t for k in ["space", "launch", "comet", "eclipse", "astronaut", "orbit", "planet"]):
             s += 5
