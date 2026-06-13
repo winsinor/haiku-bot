@@ -47,6 +47,9 @@ MAX_LINE_FAILURES  = [3, 5, 3]
 MAX_REPAIR_DISTANCE = 3
 REPAIR_TEMPS       = [0.3, 0.15, 0.5, 0.2, 0.6, 0.35, 0.55]
 
+PRINT_RETRIES      = 3
+PRINT_RETRY_DELAY  = 2  # seconds, multiplied by attempt number
+
 POETIC_SYLLABLES = {
     "fire": {1, 2}, "fires": {1, 2}, "hour": {1, 2}, "hours": {1, 2},
     "flower": {1, 2}, "flowers": {1, 2}, "our": {1, 2}, "ours": {1, 2},
@@ -641,13 +644,16 @@ def self_update():
 
 # ----------------------------- Printing -----------------------------
 def check_printer():
-    try:
-        with ReceiptPrinter():
-            pass
-        return True
-    except OSError as e:
-        status(f"Printer not reachable: {e}")
-        return False
+    for attempt in range(1, PRINT_RETRIES + 1):
+        try:
+            with ReceiptPrinter():
+                pass
+            return True
+        except OSError as e:
+            status(f"Printer not reachable (attempt {attempt}/{PRINT_RETRIES}): {e}")
+            if attempt < PRINT_RETRIES:
+                time.sleep(PRINT_RETRY_DELAY * attempt)
+    return False
 
 
 def print_receipt(date_str, year, event_text, lines, elapsed):
@@ -663,25 +669,29 @@ def print_receipt(date_str, year, event_text, lines, elapsed):
 
     footer = f"\ngenerated in {elapsed:.1f} seconds\n"
 
-    try:
-        with ReceiptPrinter() as printer:
-            printer.init()
-            # Warm up the print head with a blank line first; the first
-            # line printed right after connecting tends to come out faint.
-            printer.print_text("\n")
-            printer.justify("left")
-            printer.set_size(1)
-            printer.print_text(header)
-            printer.justify("center")
-            printer.set_size(mult)
-            printer.print_text(haiku_text)
-            printer.set_size(1)
-            printer.print_text(footer)
-            printer.justify("left")
-            printer.feed()
-            printer.cut()
-    except OSError as e:
-        status(f"Failed to print receipt: {e}")
+    for attempt in range(1, PRINT_RETRIES + 1):
+        try:
+            with ReceiptPrinter() as printer:
+                printer.init()
+                # Warm up the print head with a blank line first; the first
+                # line printed right after connecting tends to come out faint.
+                printer.print_text("\n")
+                printer.justify("left")
+                printer.set_size(1)
+                printer.print_text(header)
+                printer.justify("center")
+                printer.set_size(mult)
+                printer.print_text(haiku_text)
+                printer.set_size(1)
+                printer.print_text(footer)
+                printer.justify("left")
+                printer.feed()
+                printer.cut()
+            return
+        except OSError as e:
+            status(f"Failed to print receipt (attempt {attempt}/{PRINT_RETRIES}): {e}")
+            if attempt < PRINT_RETRIES:
+                time.sleep(PRINT_RETRY_DELAY * attempt)
 
 
 # ----------------------------- Main -----------------------------
