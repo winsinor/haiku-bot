@@ -640,7 +640,7 @@ def self_update():
 
 
 # ----------------------------- Printing -----------------------------
-def print_receipt(date_str, year, event_text, lines):
+def print_receipt(date_str, year, event_text, lines, elapsed):
     date_line = f"{date_str}, {year}"
     pad = max(1, CHARS_PER_LINE - len(date_line) - len("HaikuBot"))
     top_line = f"{date_line}{' ' * pad}HaikuBot"
@@ -650,6 +650,8 @@ def print_receipt(date_str, year, event_text, lines):
 
     mult, haiku_lines = fit_haiku(lines)
     haiku_text = "\n".join(haiku_lines) + "\n"
+
+    footer = f"\ngenerated in {elapsed:.1f} seconds\n"
 
     try:
         with ReceiptPrinter() as printer:
@@ -664,6 +666,7 @@ def print_receipt(date_str, year, event_text, lines):
             printer.set_size(mult)
             printer.print_text(haiku_text)
             printer.set_size(1)
+            printer.print_text(footer)
             printer.justify("left")
             printer.feed()
             printer.cut()
@@ -776,7 +779,7 @@ def main():
 
     if not args.no_print:
         status("Printing receipt...")
-        print_receipt(date_str, year, event_text, lines)
+        print_receipt(date_str, year, event_text, lines, elapsed)
 
 
 if __name__ == "__main__":
