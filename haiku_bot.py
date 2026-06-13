@@ -640,6 +640,16 @@ def self_update():
 
 
 # ----------------------------- Printing -----------------------------
+def check_printer():
+    try:
+        with ReceiptPrinter():
+            pass
+        return True
+    except OSError as e:
+        status(f"Printer not reachable: {e}")
+        return False
+
+
 def print_receipt(date_str, year, event_text, lines, elapsed):
     date_line = f"{date_str}, {year}"
     pad = max(1, CHARS_PER_LINE - len(date_line) - len("HaikuBot"))
@@ -701,6 +711,12 @@ def main():
         print(f"  Model : {args.model}")
 
     ensure_model(args.model)
+
+    if not args.no_print:
+        status("Checking printer connection...")
+        if not check_printer():
+            print("Printer not reachable. Connect it first, or pass --no-print.")
+            sys.exit(1)
 
     if args.date:
         try:
